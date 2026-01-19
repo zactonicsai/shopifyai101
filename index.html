@@ -1,2394 +1,275 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI in E-Commerce Mastery | Course Platform</title>
-    <script src="tailwinds.css"></script>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sora: ["Sora", "sans-serif"],
-              mono: ["Space Mono", "monospace"],
-            },
-            colors: {
-              midnight: "#0a0a1a",
-              cosmic: "#1a1a3e",
-              nebula: "#2d1b69",
-              aurora: "#00d4aa",
-              plasma: "#7c3aed",
-              solar: "#f59e0b",
-              nova: "#ec4899",
-            },
-          },
-        },
-      };
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 'sora': ['Sora', 'sans-serif'], 'mono': ['Space Mono', 'monospace'] },
+                    colors: { 'midnight': '#0a0a1a', 'cosmic': '#1a1a3e', 'nebula': '#2d1b69', 'aurora': '#00d4aa', 'plasma': '#7c3aed', 'solar': '#f59e0b', 'nova': '#ec4899' }
+                }
+            }
+        }
     </script>
     <style>
-      * {
-        font-family: "Sora", sans-serif;
-      }
-
-      .gradient-mesh {
-        background:
-          radial-gradient(
-            ellipse at 20% 20%,
-            rgba(124, 58, 237, 0.15) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            ellipse at 80% 80%,
-            rgba(0, 212, 170, 0.1) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            ellipse at 50% 50%,
-            rgba(236, 72, 153, 0.08) 0%,
-            transparent 70%
-          ),
-          linear-gradient(135deg, #0a0a1a 0%, #1a1a3e 100%);
-      }
-
-      .glass-card {
-        background: rgba(255, 255, 255, 0.03);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-      }
-
-      .glow-aurora {
-        box-shadow: 0 0 60px rgba(0, 212, 170, 0.3);
-      }
-      .glow-plasma {
-        box-shadow: 0 0 60px rgba(124, 58, 237, 0.3);
-      }
-
-      .text-gradient {
-        background: linear-gradient(
-          135deg,
-          #00d4aa 0%,
-          #7c3aed 50%,
-          #ec4899 100%
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .btn-primary {
-        background: linear-gradient(135deg, #00d4aa 0%, #00b896 100%);
-        transition: all 0.3s ease;
-      }
-      .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 40px rgba(0, 212, 170, 0.4);
-      }
-
-      .btn-secondary {
-        background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
-        transition: all 0.3s ease;
-      }
-      .btn-secondary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 40px rgba(124, 58, 237, 0.4);
-      }
-
-      .progress-ring {
-        background: conic-gradient(
-          from 0deg,
-          #00d4aa var(--progress),
-          rgba(255, 255, 255, 0.1) var(--progress)
-        );
-      }
-
-      .lesson-card {
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      }
-      .lesson-card:hover {
-        transform: translateY(-8px) scale(1.02);
-      }
-
-      .sidebar-item {
-        transition: all 0.3s ease;
-      }
-      .sidebar-item:hover,
-      .sidebar-item.active {
-        background: rgba(0, 212, 170, 0.1);
-        border-left: 3px solid #00d4aa;
-      }
-
-      .fade-in {
-        animation: fadeIn 0.6s ease forwards;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .slide-up {
-        animation: slideUp 0.5s ease forwards;
-      }
-
-      @keyframes slideUp {
-        from {
-          opacity: 0;
-          transform: translateY(40px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .pulse-glow {
-        animation: pulseGlow 2s infinite;
-      }
-
-      @keyframes pulseGlow {
-        0%,
-        100% {
-          box-shadow: 0 0 20px rgba(0, 212, 170, 0.4);
-        }
-        50% {
-          box-shadow: 0 0 40px rgba(0, 212, 170, 0.6);
-        }
-      }
-
-      .floating {
-        animation: floating 3s ease-in-out infinite;
-      }
-
-      @keyframes floating {
-        0%,
-        100% {
-          transform: translateY(0px);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
-      }
-
-      .quiz-option {
-        transition: all 0.3s ease;
-        cursor: pointer;
-      }
-      .quiz-option:hover {
-        background: rgba(124, 58, 237, 0.2);
-        border-color: rgba(124, 58, 237, 0.5);
-      }
-      .quiz-option.selected {
-        background: rgba(124, 58, 237, 0.3);
-        border-color: #7c3aed;
-      }
-      .quiz-option.correct {
-        background: rgba(0, 212, 170, 0.3);
-        border-color: #00d4aa;
-      }
-      .quiz-option.incorrect {
-        background: rgba(239, 68, 68, 0.3);
-        border-color: #ef4444;
-      }
-
-      .video-container {
-      }
-
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.05);
-      }
-      ::-webkit-scrollbar-thumb {
-        background: rgba(124, 58, 237, 0.5);
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: rgba(124, 58, 237, 0.7);
-      }
-
-      .noise-overlay::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-        opacity: 0.03;
-        pointer-events: none;
-        z-index: 1;
-      }
-
-      .content-section {
-        position: relative;
-        z-index: 2;
-      }
+        * { font-family: 'Sora', sans-serif; }
+        .gradient-mesh { background: radial-gradient(ellipse at 20% 20%, rgba(124, 58, 237, 0.15) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(0, 212, 170, 0.1) 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(236, 72, 153, 0.08) 0%, transparent 70%), linear-gradient(135deg, #0a0a1a 0%, #1a1a3e 100%); }
+        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .glow-plasma { box-shadow: 0 0 60px rgba(124, 58, 237, 0.3); }
+        .text-gradient { background: linear-gradient(135deg, #00d4aa 0%, #7c3aed 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .btn-primary { background: linear-gradient(135deg, #00d4aa 0%, #00b896 100%); transition: all 0.3s ease; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 40px rgba(0, 212, 170, 0.4); }
+        .btn-secondary { background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%); transition: all 0.3s ease; }
+        .btn-secondary:hover { transform: translateY(-2px); box-shadow: 0 10px 40px rgba(124, 58, 237, 0.4); }
+        .progress-ring { background: conic-gradient(from 0deg, #00d4aa var(--progress), rgba(255, 255, 255, 0.1) var(--progress)); }
+        .lesson-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .lesson-card:hover { transform: translateY(-8px) scale(1.02); }
+        .sidebar-item { transition: all 0.3s ease; }
+        .sidebar-item:hover, .sidebar-item.active { background: rgba(0, 212, 170, 0.1); border-left: 3px solid #00d4aa; }
+        .fade-in { animation: fadeIn 0.6s ease forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .slide-up { animation: slideUp 0.5s ease forwards; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        .pulse-glow { animation: pulseGlow 2s infinite; }
+        @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 170, 0.4); } 50% { box-shadow: 0 0 40px rgba(0, 212, 170, 0.6); } }
+        .quiz-option { transition: all 0.3s ease; cursor: pointer; }
+        .quiz-option:hover { background: rgba(124, 58, 237, 0.2); border-color: rgba(124, 58, 237, 0.5); }
+        .quiz-option.selected { background: rgba(124, 58, 237, 0.3); border-color: #7c3aed; }
+        .quiz-option.correct { background: rgba(0, 212, 170, 0.3); border-color: #00d4aa; }
+        .quiz-option.incorrect { background: rgba(239, 68, 68, 0.3); border-color: #ef4444; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+        .video-container iframe, .video-container video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .video-placeholder { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(124, 58, 237, 0.2) 0%, rgba(0, 212, 170, 0.1) 100%); }
+        .resource-link { transition: all 0.3s ease; }
+        .resource-link:hover { transform: translateX(5px); background: rgba(255, 255, 255, 0.05); }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); }
+        ::-webkit-scrollbar-thumb { background: rgba(124, 58, 237, 0.5); border-radius: 4px; }
+        .noise-overlay::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); opacity: 0.03; pointer-events: none; z-index: 1; }
+        .content-section { position: relative; z-index: 2; }
     </style>
-  </head>
-  <body class="gradient-mesh min-h-screen text-white noise-overlay">
-    <!-- Welcome Page -->
-    <div
-      id="welcomePage"
-      class="content-section min-h-screen flex items-center justify-center p-4"
-    >
-      <div class="max-w-4xl mx-auto text-center fade-in">
-        <div class="mb-8">
-          <div
-            class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-6"
-          >
-            <span class="w-2 h-2 bg-aurora rounded-full pulse-glow"></span>
-            <span class="text-sm text-gray-400 font-mono"
-              >COURSE PLATFORM v2.0</span
-            >
-          </div>
-          <h1 class="text-5xl md:text-7xl font-bold mb-6">
-            <span class="text-gradient">AI in E-Commerce</span>
-            <br />
-            <span class="text-white/90">Mastery Course</span>
-          </h1>
-          <p class="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Transform your Shopify store with cutting-edge AI. Learn to harness
-            machine learning, natural language processing, and generative AI to
-            automate, optimize, and scale your business.
-          </p>
-        </div>
-
-        <div
-          class="glass-card rounded-3xl p-8 md:p-12 max-w-xl mx-auto glow-plasma"
-        >
-          <h2 class="text-2xl font-semibold mb-6 text-white">
-            Begin Your Journey
-          </h2>
-
-          <div class="space-y-4">
-            <div class="text-left">
-              <label class="text-sm text-gray-400 mb-2 block font-mono"
-                >YOUR NAME</label
-              >
-              <input
-                type="text"
-                id="userName"
-                placeholder="Enter your full name"
-                class="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-aurora/50 focus:ring-2 focus:ring-aurora/20 transition-all"
-              />
-            </div>
-
-            <div class="text-left">
-              <label class="text-sm text-gray-400 mb-2 block font-mono"
-                >EMAIL ADDRESS</label
-              >
-              <input
-                type="email"
-                id="userEmail"
-                placeholder="your@email.com"
-                class="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-aurora/50 focus:ring-2 focus:ring-aurora/20 transition-all"
-              />
-            </div>
-
-            <button
-              onclick="startCourse()"
-              class="w-full btn-primary text-midnight font-semibold py-4 px-8 rounded-xl mt-6 flex items-center justify-center gap-2"
-            >
-              <span>Start Learning</span>
-              <svg
-                class="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"
-                />
-              </svg>
-            </button>
-          </div>
-
-          <div class="mt-8 pt-6 border-t border-white/10">
-            <p class="text-sm text-gray-500 mb-3">Already have progress?</p>
-            <label
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 cursor-pointer hover:border-plasma/50 transition-all"
-            >
-              <svg
-                class="w-4 h-4 text-plasma"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
-                />
-              </svg>
-              <span class="text-sm">Import Progress</span>
-              <input
-                type="file"
-                id="importFile"
-                accept=".json"
-                class="hidden"
-                onchange="importProgress(event)"
-              />
-            </label>
-          </div>
-        </div>
-
-        <div class="mt-12 grid grid-cols-3 gap-6 max-w-2xl mx-auto">
-          <div class="text-center">
-            <div class="text-3xl font-bold text-gradient">3</div>
-            <div class="text-sm text-gray-500">Phases</div>
-          </div>
-          <div class="text-center">
-            <div class="text-3xl font-bold text-gradient">15+</div>
-            <div class="text-sm text-gray-500">Lessons</div>
-          </div>
-          <div class="text-center">
-            <div class="text-3xl font-bold text-gradient">∞</div>
-            <div class="text-sm text-gray-500">Potential</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Main Course Interface -->
-    <div id="coursePage" class="content-section hidden">
-      <!-- Top Navigation -->
-      <nav
-        class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/5"
-      >
-        <div
-          class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between"
-        >
-          <div class="flex items-center gap-4">
-            <button
-              onclick="toggleSidebar()"
-              class="p-2 rounded-lg hover:bg-white/5 transition-all lg:hidden"
-            >
-              <svg
-                class="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
-            <div class="flex items-center gap-2">
-              <div
-                class="w-8 h-8 rounded-lg bg-gradient-to-br from-aurora to-plasma flex items-center justify-center"
-              >
-                <svg
-                  class="w-5 h-5 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-                  />
-                </svg>
-              </div>
-              <span class="font-semibold hidden sm:block">AI Commerce</span>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-4">
-            <div
-              class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5"
-            >
-              <div
-                class="w-8 h-8 rounded-full bg-gradient-to-br from-plasma to-nova flex items-center justify-center text-sm font-bold"
-                id="userAvatar"
-              >
-                U
-              </div>
-              <span class="text-sm" id="displayName">User</span>
-            </div>
-
-            <div class="flex items-center gap-2">
-              <button
-                onclick="exportProgress()"
-                class="p-2 rounded-lg hover:bg-white/5 transition-all"
-                title="Export Progress"
-              >
-                <svg
-                  class="w-5 h-5 text-gray-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                  />
-                </svg>
-              </button>
-              <button
-                onclick="showDashboard()"
-                class="p-2 rounded-lg hover:bg-white/5 transition-all"
-                title="Dashboard"
-              >
-                <svg
-                  class="w-5 h-5 text-gray-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                  />
-                </svg>
-              </button>
-              <button
-                onclick="logout()"
-                class="p-2 rounded-lg hover:bg-white/5 transition-all"
-                title="Logout"
-              >
-                <svg
-                  class="w-5 h-5 text-gray-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      <!-- Sidebar -->
-      <aside
-        id="sidebar"
-        class="fixed left-0 top-0 bottom-0 w-80 glass-card border-r border-white/5 pt-20 transform -translate-x-full lg:translate-x-0 transition-transform z-40 overflow-y-auto"
-      >
-        <div class="p-4">
-          <!-- Progress Overview -->
-          <div class="glass-card rounded-2xl p-4 mb-6">
-            <div class="flex items-center gap-4">
-              <div class="relative w-16 h-16">
-                <div
-                  class="progress-ring w-full h-full rounded-full"
-                  style="--progress: 0%"
-                >
-                  <div
-                    class="absolute inset-1 bg-midnight rounded-full flex items-center justify-center"
-                  >
-                    <span class="text-lg font-bold" id="progressPercent"
-                      >0%</span
-                    >
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div class="text-sm text-gray-400">Course Progress</div>
-                <div class="text-lg font-semibold">
-                  <span id="completedLessons">0</span> /
-                  <span id="totalLessons">0</span> Complete
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Course Navigation -->
-          <nav id="lessonNav" class="space-y-2">
-            <!-- Generated by JavaScript -->
-          </nav>
-        </div>
-      </aside>
-
-      <!-- Main Content Area -->
-      <main class="lg:ml-80 pt-20 min-h-screen">
-        <!-- Dashboard View -->
-        <div id="dashboardView" class="p-6 md:p-8">
-          <div class="max-w-5xl mx-auto">
-            <div class="mb-8 slide-up">
-              <h1 class="text-3xl md:text-4xl font-bold mb-2">
-                Welcome back, <span id="dashboardName">User</span>!
-              </h1>
-              <p class="text-gray-400">Continue your AI & E-Commerce journey</p>
-            </div>
-
-            <!-- Stats Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-              <div
-                class="glass-card rounded-2xl p-6 slide-up"
-                style="animation-delay: 0.1s"
-              >
-                <div class="flex items-center gap-4">
-                  <div
-                    class="w-12 h-12 rounded-xl bg-aurora/20 flex items-center justify-center"
-                  >
-                    <svg
-                      class="w-6 h-6 text-aurora"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="text-2xl font-bold" id="statCompleted">0</div>
-                    <div class="text-sm text-gray-400">Lessons Completed</div>
-                  </div>
-                </div>
-              </div>
-
-              <div
-                class="glass-card rounded-2xl p-6 slide-up"
-                style="animation-delay: 0.2s"
-              >
-                <div class="flex items-center gap-4">
-                  <div
-                    class="w-12 h-12 rounded-xl bg-plasma/20 flex items-center justify-center"
-                  >
-                    <svg
-                      class="w-6 h-6 text-plasma"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="text-2xl font-bold" id="statQuizzes">0</div>
-                    <div class="text-sm text-gray-400">Quizzes Passed</div>
-                  </div>
-                </div>
-              </div>
-
-              <div
-                class="glass-card rounded-2xl p-6 slide-up"
-                style="animation-delay: 0.3s"
-              >
-                <div class="flex items-center gap-4">
-                  <div
-                    class="w-12 h-12 rounded-xl bg-nova/20 flex items-center justify-center"
-                  >
-                    <svg
-                      class="w-6 h-6 text-nova"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="text-2xl font-bold" id="statComments">0</div>
-                    <div class="text-sm text-gray-400">Notes & Comments</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Phase Cards -->
-            <h2 class="text-xl font-semibold mb-4">Course Phases</h2>
-            <div id="phaseCards" class="grid gap-4">
-              <!-- Generated by JavaScript -->
-            </div>
-          </div>
-        </div>
-
-        <!-- Lesson View -->
-        <div id="lessonView" class="hidden p-6 md:p-8">
-          <div class="max-w-4xl mx-auto">
-            <!-- Lesson Header -->
+</head>
+<body class="gradient-mesh min-h-screen text-white noise-overlay">
+    <div id="welcomePage" class="content-section min-h-screen flex items-center justify-center p-4">
+        <div class="max-w-4xl mx-auto text-center fade-in">
             <div class="mb-8">
-              <button
-                onclick="showDashboard()"
-                class="inline-flex items-center gap-2 text-gray-400 hover:text-white mb-4 transition-colors"
-              >
-                <svg
-                  class="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M15 19l-7-7 7-7"
-                  />
-                </svg>
-                Back to Dashboard
-              </button>
-              <div class="flex items-start justify-between gap-4 flex-wrap">
-                <div>
-                  <div
-                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-plasma/20 text-plasma text-sm mb-3"
-                  >
-                    <span id="lessonPhase">Phase 1</span>
-                  </div>
-                  <h1
-                    class="text-3xl md:text-4xl font-bold mb-2"
-                    id="lessonTitle"
-                  >
-                    Lesson Title
-                  </h1>
-                  <p class="text-gray-400" id="lessonSubtitle">Subtitle</p>
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-6">
+                    <span class="w-2 h-2 bg-aurora rounded-full pulse-glow"></span>
+                    <span class="text-sm text-gray-400 font-mono">COURSE PLATFORM v2.0</span>
                 </div>
-                <div
-                  id="lessonStatus"
-                  class="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5"
-                >
-                  <span class="w-3 h-3 rounded-full bg-gray-500"></span>
-                  <span class="text-sm">Not Started</span>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6"><span class="text-gradient">AI in E-Commerce</span><br><span class="text-white/90">Mastery Course</span></h1>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">Transform your Shopify store with cutting-edge AI. Learn machine learning, NLP, and generative AI to automate, optimize, and scale.</p>
+            </div>
+            <div class="glass-card rounded-3xl p-8 md:p-12 max-w-xl mx-auto glow-plasma">
+                <h2 class="text-2xl font-semibold mb-6 text-white">Begin Your Journey</h2>
+                <div class="space-y-4">
+                    <div class="text-left"><label class="text-sm text-gray-400 mb-2 block font-mono">YOUR NAME</label><input type="text" id="userName" placeholder="Enter your full name" class="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-aurora/50 focus:ring-2 focus:ring-aurora/20 transition-all"></div>
+                    <div class="text-left"><label class="text-sm text-gray-400 mb-2 block font-mono">EMAIL ADDRESS</label><input type="email" id="userEmail" placeholder="your@email.com" class="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-aurora/50 focus:ring-2 focus:ring-aurora/20 transition-all"></div>
+                    <button onclick="startCourse()" class="w-full btn-primary text-midnight font-semibold py-4 px-8 rounded-xl mt-6 flex items-center justify-center gap-2"><span>Start Learning</span><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></button>
                 </div>
-              </div>
-            </div>
-
-            <!-- Video Section -->
-            <div>
-              <div class="video-container" id="videoContainer">
-                <div class="text-center">
-                  <div></div>
-                  <p class="text-gray-400" id="videoPlaceholder">
-                    Video content will appear here
-                  </p>
+                <div class="mt-8 pt-6 border-t border-white/10">
+                    <p class="text-sm text-gray-500 mb-3">Already have progress?</p>
+                    <label class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 cursor-pointer hover:border-plasma/50 transition-all"><svg class="w-4 h-4 text-plasma" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg><span class="text-sm">Import Progress</span><input type="file" id="importFile" accept=".json" class="hidden" onchange="importProgress(event)"></label>
                 </div>
-              </div>
             </div>
-
-            <!-- Lesson Content -->
-            <div class="glass-card rounded-2xl p-6 md:p-8 mb-8">
-              <h2 class="text-xl font-semibold mb-6 flex items-center gap-2">
-                <svg
-                  class="w-5 h-5 text-aurora"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                  />
-                </svg>
-                Lesson Content
-              </h2>
-              <div id="lessonContent" class="prose prose-invert max-w-none">
-                <!-- Generated by JavaScript -->
-              </div>
+            <div class="mt-12 grid grid-cols-3 gap-6 max-w-2xl mx-auto">
+                <div class="text-center"><div class="text-3xl font-bold text-gradient">3</div><div class="text-sm text-gray-500">Phases</div></div>
+                <div class="text-center"><div class="text-3xl font-bold text-gradient">11</div><div class="text-sm text-gray-500">Lessons</div></div>
+                <div class="text-center"><div class="text-3xl font-bold text-gradient">∞</div><div class="text-sm text-gray-500">Potential</div></div>
             </div>
-
-            <!-- Quiz Section -->
-            <div
-              class="glass-card rounded-2xl p-6 md:p-8 mb-8"
-              id="quizSection"
-            >
-              <h2 class="text-xl font-semibold mb-6 flex items-center gap-2">
-                <svg
-                  class="w-5 h-5 text-plasma"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                  />
-                </svg>
-                Knowledge Check
-              </h2>
-              <div id="quizContent">
-                <!-- Generated by JavaScript -->
-              </div>
-              <div id="quizResult" class="hidden mt-6 p-4 rounded-xl">
-                <!-- Quiz result -->
-              </div>
-            </div>
-
-            <!-- Comments Section -->
-            <div class="glass-card rounded-2xl p-6 md:p-8 mb-8">
-              <h2 class="text-xl font-semibold mb-6 flex items-center gap-2">
-                <svg
-                  class="w-5 h-5 text-nova"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
-                  />
-                </svg>
-                Your Notes
-              </h2>
-              <div id="commentsList" class="space-y-3 mb-4">
-                <!-- Generated by JavaScript -->
-              </div>
-              <div class="flex gap-3">
-                <input
-                  type="text"
-                  id="commentInput"
-                  placeholder="Add a note or comment..."
-                  class="flex-1 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-aurora/50 transition-all"
-                />
-                <button
-                  onclick="addComment()"
-                  class="btn-primary px-6 py-3 rounded-xl font-medium"
-                >
-                  Add
-                </button>
-              </div>
-            </div>
-
-            <!-- Navigation -->
-            <div class="flex items-center justify-between gap-4 flex-wrap">
-              <button
-                id="prevLesson"
-                onclick="navigateLesson(-1)"
-                class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 transition-all"
-              >
-                <svg
-                  class="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M15 19l-7-7 7-7"
-                  />
-                </svg>
-                Previous
-              </button>
-              <button
-                onclick="markComplete()"
-                id="markCompleteBtn"
-                class="btn-secondary px-6 py-3 rounded-xl font-medium inline-flex items-center gap-2"
-              >
-                <svg
-                  class="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-                Mark Complete
-              </button>
-              <button
-                id="nextLesson"
-                onclick="navigateLesson(1)"
-                class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 transition-all"
-              >
-                Next
-                <svg
-                  class="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
         </div>
-      </main>
     </div>
-
-    <!-- Toast Notification -->
-    <div
-      id="toast"
-      class="fixed bottom-6 right-6 transform translate-y-20 opacity-0 transition-all duration-300 z-50"
-    >
-      <div class="glass-card rounded-xl px-6 py-4 flex items-center gap-3">
-        <div
-          id="toastIcon"
-          class="w-8 h-8 rounded-full bg-aurora/20 flex items-center justify-center"
-        >
-          <svg
-            class="w-4 h-4 text-aurora"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M5 13l4 4L19 7"
-            />
-          </svg>
-        </div>
-        <span id="toastMessage">Success!</span>
-      </div>
+    <div id="coursePage" class="content-section hidden">
+        <nav class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/5">
+            <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <button onclick="toggleSidebar()" class="p-2 rounded-lg hover:bg-white/5 transition-all lg:hidden"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+                    <div class="flex items-center gap-2"><div class="w-8 h-8 rounded-lg bg-gradient-to-br from-aurora to-plasma flex items-center justify-center"><svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div><span class="font-semibold hidden sm:block">AI Commerce</span></div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5"><div class="w-8 h-8 rounded-full bg-gradient-to-br from-plasma to-nova flex items-center justify-center text-sm font-bold" id="userAvatar">U</div><span class="text-sm" id="displayName">User</span></div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="exportProgress()" class="p-2 rounded-lg hover:bg-white/5 transition-all" title="Export Progress"><svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg></button>
+                        <button onclick="showDashboard()" class="p-2 rounded-lg hover:bg-white/5 transition-all" title="Dashboard"><svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg></button>
+                        <button onclick="logout()" class="p-2 rounded-lg hover:bg-white/5 transition-all" title="Logout"><svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg></button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <aside id="sidebar" class="fixed left-0 top-0 bottom-0 w-80 glass-card border-r border-white/5 pt-20 transform -translate-x-full lg:translate-x-0 transition-transform z-40 overflow-y-auto">
+            <div class="p-4">
+                <div class="glass-card rounded-2xl p-4 mb-6">
+                    <div class="flex items-center gap-4">
+                        <div class="relative w-16 h-16"><div class="progress-ring w-full h-full rounded-full" style="--progress: 0%"><div class="absolute inset-1 bg-midnight rounded-full flex items-center justify-center"><span class="text-lg font-bold" id="progressPercent">0%</span></div></div></div>
+                        <div><div class="text-sm text-gray-400">Course Progress</div><div class="text-lg font-semibold"><span id="completedLessons">0</span> / <span id="totalLessons">0</span> Complete</div></div>
+                    </div>
+                </div>
+                <nav id="lessonNav" class="space-y-2"></nav>
+            </div>
+        </aside>
+        <main class="lg:ml-80 pt-20 min-h-screen">
+            <div id="dashboardView" class="p-6 md:p-8">
+                <div class="max-w-5xl mx-auto">
+                    <div class="mb-8 slide-up"><h1 class="text-3xl md:text-4xl font-bold mb-2">Welcome back, <span id="dashboardName">User</span>!</h1><p class="text-gray-400">Continue your AI & E-Commerce journey</p></div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                        <div class="glass-card rounded-2xl p-6 slide-up" style="animation-delay: 0.1s"><div class="flex items-center gap-4"><div class="w-12 h-12 rounded-xl bg-aurora/20 flex items-center justify-center"><svg class="w-6 h-6 text-aurora" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div><div class="text-2xl font-bold" id="statCompleted">0</div><div class="text-sm text-gray-400">Lessons Completed</div></div></div></div>
+                        <div class="glass-card rounded-2xl p-6 slide-up" style="animation-delay: 0.2s"><div class="flex items-center gap-4"><div class="w-12 h-12 rounded-xl bg-plasma/20 flex items-center justify-center"><svg class="w-6 h-6 text-plasma" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div><div><div class="text-2xl font-bold" id="statQuizzes">0</div><div class="text-sm text-gray-400">Quizzes Passed</div></div></div></div>
+                        <div class="glass-card rounded-2xl p-6 slide-up" style="animation-delay: 0.3s"><div class="flex items-center gap-4"><div class="w-12 h-12 rounded-xl bg-nova/20 flex items-center justify-center"><svg class="w-6 h-6 text-nova" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/></svg></div><div><div class="text-2xl font-bold" id="statComments">0</div><div class="text-sm text-gray-400">Notes & Comments</div></div></div></div>
+                    </div>
+                    <h2 class="text-xl font-semibold mb-4">Course Phases</h2>
+                    <div id="phaseCards" class="grid gap-4"></div>
+                </div>
+            </div>
+            <div id="lessonView" class="hidden p-6 md:p-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="mb-8">
+                        <button onclick="showDashboard()" class="inline-flex items-center gap-2 text-gray-400 hover:text-white mb-4 transition-colors"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>Back to Dashboard</button>
+                        <div class="flex items-start justify-between gap-4 flex-wrap">
+                            <div><div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-plasma/20 text-plasma text-sm mb-3"><span id="lessonPhase">Phase 1</span></div><h1 class="text-3xl md:text-4xl font-bold mb-2" id="lessonTitle">Lesson Title</h1><p class="text-gray-400" id="lessonSubtitle">Subtitle</p></div>
+                            <div id="lessonStatus" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5"><span class="w-3 h-3 rounded-full bg-gray-500"></span><span class="text-sm">Not Started</span></div>
+                        </div>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 md:p-8 mb-8"><h2 class="text-xl font-semibold mb-6 flex items-center gap-2"><svg class="w-5 h-5 text-aurora" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>Lesson Content</h2><div id="lessonContent" class="prose prose-invert max-w-none"></div></div>
+                    <div class="glass-card rounded-2xl p-6 md:p-8 mb-8" id="resourcesSection"><h2 class="text-xl font-semibold mb-6 flex items-center gap-2"><svg class="w-5 h-5 text-solar" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>Tutorials & References</h2><div id="resourcesList" class="space-y-3"></div></div>
+                    <div class="glass-card rounded-2xl p-6 md:p-8 mb-8" id="quizSection"><h2 class="text-xl font-semibold mb-6 flex items-center gap-2"><svg class="w-5 h-5 text-plasma" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>Knowledge Check</h2><div id="quizContent"></div><div id="quizResult" class="hidden mt-6 p-4 rounded-xl"></div></div>
+                    <div class="glass-card rounded-2xl overflow-hidden mb-8" id="videoSection"><div class="p-6 border-b border-white/10"><h2 class="text-xl font-semibold flex items-center gap-2"><svg class="w-5 h-5 text-nova" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Video Lesson</h2></div><div class="video-container" id="videoContainer"><div class="video-placeholder" id="videoPlaceholder"><div class="text-center p-8"><div class="w-20 h-20 mx-auto mb-4 rounded-full bg-white/5 flex items-center justify-center"><svg class="w-10 h-10 text-aurora" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><p class="text-gray-400">Video content will appear here</p></div></div></div></div>
+                    <div class="glass-card rounded-2xl p-6 md:p-8 mb-8"><h2 class="text-xl font-semibold mb-6 flex items-center gap-2"><svg class="w-5 h-5 text-nova" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/></svg>Your Notes</h2><div id="commentsList" class="space-y-3 mb-4"></div><div class="flex gap-3"><input type="text" id="commentInput" placeholder="Add a note or comment..." class="flex-1 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-aurora/50 transition-all"><button onclick="addComment()" class="btn-primary px-6 py-3 rounded-xl font-medium">Add</button></div></div>
+                    <div class="flex items-center justify-between gap-4 flex-wrap">
+                        <button id="prevLesson" onclick="navigateLesson(-1)" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 transition-all"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>Previous</button>
+                        <button onclick="markComplete()" id="markCompleteBtn" class="btn-secondary px-6 py-3 rounded-xl font-medium inline-flex items-center gap-2"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Mark Complete</button>
+                        <button id="nextLesson" onclick="navigateLesson(1)" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 transition-all">Next<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-
+    <div id="toast" class="fixed bottom-6 right-6 transform translate-y-20 opacity-0 transition-all duration-300 z-50"><div class="glass-card rounded-xl px-6 py-4 flex items-center gap-3"><div id="toastIcon" class="w-8 h-8 rounded-full bg-aurora/20 flex items-center justify-center"><svg class="w-4 h-4 text-aurora" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></div><span id="toastMessage">Success!</span></div></div>
     <script>
-      // ===============================
-      // STATIC COURSE DATA
-      // ===============================
-      const STATIC_COURSE_DATA = {
-        title: "AI in E-Commerce Mastery",
-        description:
-          "Master the intersection of Artificial Intelligence and E-Commerce with Shopify",
-        phases: [
-          {
-            id: "phase-1",
-            title: "Phase 1: Understanding AI",
-            subtitle: "The Foundation of Intelligent E-Commerce",
-            color: "aurora",
-            lessons: [
-              {
-                id: "1.1",
-                title: "Defining Artificial Intelligence (AI)",
-                subtitle: "Understanding the core concepts of AI",
-                videoUrl: "",
-                content: `
-                                <h3 class="text-xl font-semibold text-aurora mb-4">What is Artificial Intelligence?</h3>
-                                <p class="text-gray-300 mb-4">At its core, <strong>Artificial Intelligence (AI)</strong> refers to computer systems that are able to perform tasks that normally require human intelligence. This includes learning from experience, understanding natural language, recognizing patterns, making decisions, and solving complex problems.</p>
-                                
-                                <h3 class="text-xl font-semibold text-aurora mb-4 mt-8">Machine Learning (ML)</h3>
-                                <p class="text-gray-300 mb-4">Machine Learning is a subset of AI where algorithms "learn" from data without being explicitly programmed for every scenario. For example, an ML system can predict what a customer wants to buy based on their past clicks, browsing history, and purchase patterns. The more data it processes, the better its predictions become.</p>
-                                <div class="bg-white/5 rounded-xl p-4 mb-4 border-l-4 border-aurora">
-                                    <p class="text-gray-400 italic">Real-world example: Amazon's product recommendations are powered by ML algorithms that analyze billions of data points to suggest products you're likely to purchase.</p>
-                                </div>
-                                
-                                <h3 class="text-xl font-semibold text-aurora mb-4 mt-8">Natural Language Processing (NLP)</h3>
-                                <p class="text-gray-300 mb-4">NLP enables computers to understand, interpret, and generate human language. This is the technology behind chatbots that can answer customer questions, automated email responses, voice assistants like Siri and Alexa, and sentiment analysis tools that gauge customer feedback.</p>
-                                
-                                <h3 class="text-xl font-semibold text-aurora mb-4 mt-8">Generative AI (GenAI)</h3>
-                                <p class="text-gray-300 mb-4">Generative AI represents the cutting edge of AI technology—the ability to <em>create</em> new content rather than just analyzing existing data. This includes generating product descriptions, creating marketing copy, producing images, writing code, and even composing music.</p>
-                                <div class="bg-plasma/10 rounded-xl p-4 border border-plasma/30">
-                                    <p class="text-gray-300"><strong>Key Insight:</strong> GenAI tools like ChatGPT, Claude, and Midjourney are transforming how e-commerce businesses create content, enabling small teams to produce professional-quality materials at scale.</p>
-                                </div>
-                            `,
-                quiz: {
-                  question:
-                    "What is the key difference between traditional programming and Machine Learning?",
-                  options: [
-                    "ML is faster than traditional programming",
-                    "ML algorithms learn from data without explicit programming for every scenario",
-                    "ML only works with numbers",
-                    "Traditional programming cannot be used in e-commerce",
-                  ],
-                  correctIndex: 1,
-                  explanation:
-                    "Machine Learning's defining characteristic is its ability to learn patterns from data and improve over time, rather than following rigid, pre-programmed rules.",
+        const STATIC_COURSE_DATA = {
+            title: "AI in E-Commerce Mastery",
+            description: "Master AI and E-Commerce with Shopify",
+            version: "2.0",
+            phases: [
+                {
+                    id: "phase-1", title: "Phase 1: Understanding AI", subtitle: "The Foundation of Intelligent E-Commerce", color: "aurora",
+                    lessons: [
+                        { id: "1.1", title: "Defining Artificial Intelligence (AI)", subtitle: "Understanding the core concepts of AI", videoId: "ad79nYk2keg", videoType: "youtube",
+                            content: `<h3 class="text-xl font-semibold text-aurora mb-4">What is Artificial Intelligence?</h3><p class="text-gray-300 mb-4"><strong>Artificial Intelligence (AI)</strong> refers to computer systems able to perform tasks that normally require human intelligence—learning, understanding language, recognizing patterns, making decisions, and solving problems.</p><h3 class="text-xl font-semibold text-aurora mb-4 mt-8">Machine Learning (ML)</h3><p class="text-gray-300 mb-4">ML is a subset of AI where algorithms "learn" from data without explicit programming. An ML system can predict what customers want based on their browsing and purchase history.</p><div class="bg-white/5 rounded-xl p-4 mb-4 border-l-4 border-aurora"><p class="text-gray-400 italic">Example: Amazon's recommendations are powered by ML analyzing billions of data points.</p></div><h3 class="text-xl font-semibold text-aurora mb-4 mt-8">Natural Language Processing (NLP)</h3><p class="text-gray-300 mb-4">NLP enables computers to understand and generate human language—powering chatbots, automated emails, voice assistants, and sentiment analysis.</p><h3 class="text-xl font-semibold text-aurora mb-4 mt-8">Generative AI (GenAI)</h3><p class="text-gray-300 mb-4">GenAI creates new content rather than just analyzing data—product descriptions, marketing copy, images, and code.</p><div class="bg-plasma/10 rounded-xl p-4 border border-plasma/30"><p class="text-gray-300"><strong>Key Insight:</strong> Tools like ChatGPT and Claude are transforming e-commerce content creation.</p></div>`,
+                            resources: [{ title: "Introduction to AI - Google", url: "https://ai.google/education/", type: "tutorial" }, { title: "ML Crash Course", url: "https://developers.google.com/machine-learning/crash-course", type: "course" }, { title: "What is NLP? - IBM", url: "https://www.ibm.com/topics/natural-language-processing", type: "article" }, { title: "Generative AI - AWS", url: "https://aws.amazon.com/what-is/generative-ai/", type: "documentation" }],
+                            quiz: { question: "What is the key difference between traditional programming and Machine Learning?", options: ["ML is faster", "ML learns from data without explicit programming for every scenario", "ML only works with numbers", "Traditional programming can't be used in e-commerce"], correctIndex: 1, explanation: "ML's defining characteristic is learning patterns from data and improving over time." }
+                        },
+                        { id: "1.2", title: "The 'Brain' of E-Commerce AI", subtitle: "Core AI technologies powering online retail", videoId: "ukzFI9rgwfU", videoType: "youtube",
+                            content: `<h3 class="text-xl font-semibold text-aurora mb-4">Predictive Analytics</h3><p class="text-gray-300 mb-4">Uses historical data to forecast trends—inventory needs, sales spikes, customer lifetime value, and churn prediction.</p><div class="bg-white/5 rounded-xl p-4 mb-4 border-l-4 border-plasma"><p class="text-gray-400 italic">Example: A retailer orders 40% more winter coats based on weather forecasts and historical sales.</p></div><h3 class="text-xl font-semibold text-aurora mb-4 mt-8">Computer Vision</h3><p class="text-gray-300 mb-4">AI that "sees" images—enabling visual search, auto-tagging, quality control, and AR try-on experiences.</p><h3 class="text-xl font-semibold text-aurora mb-4 mt-8">Personalization Engines</h3><p class="text-gray-300 mb-4">Netflix-style recommendations for your store—analyzing behavior for personalized products, emails, pricing, and homepages.</p><div class="grid md:grid-cols-2 gap-4 mt-6"><div class="bg-aurora/10 rounded-xl p-4 border border-aurora/30"><h4 class="font-semibold text-aurora mb-2">Input Data</h4><ul class="text-gray-300 text-sm space-y-1"><li>• Browsing history</li><li>• Purchase history</li><li>• Cart abandonment</li><li>• Search queries</li></ul></div><div class="bg-plasma/10 rounded-xl p-4 border border-plasma/30"><h4 class="font-semibold text-plasma mb-2">Output Actions</h4><ul class="text-gray-300 text-sm space-y-1"><li>• Product suggestions</li><li>• Email timing</li><li>• Discount offers</li><li>• Content display</li></ul></div></div>`,
+                            resources: [{ title: "Predictive Analytics for Retail", url: "https://www.shopify.com/retail/predictive-analytics", type: "article" }, { title: "Computer Vision - Google Cloud", url: "https://cloud.google.com/vision", type: "documentation" }, { title: "Recommendation Systems - TensorFlow", url: "https://www.tensorflow.org/recommenders", type: "tutorial" }, { title: "Personalization Best Practices", url: "https://www.shopify.com/blog/personalization", type: "guide" }],
+                            quiz: { question: "Which AI technology helps customers see furniture in their living room?", options: ["Predictive Analytics", "NLP", "Computer Vision & AR", "ML only"], correctIndex: 2, explanation: "Computer Vision with AR enables virtual visualization features." }
+                        },
+                        { id: "1.3", title: "Why AI Matters for Merchants", subtitle: "The competitive advantages of AI adoption", videoId: "5dZ_lvDgevk", videoType: "youtube",
+                            content: `<h3 class="text-xl font-semibold text-aurora mb-4">Efficiency: Automate the Mundane</h3><p class="text-gray-300 mb-4">AI handles repetitive tasks: data entry, FAQ responses, order processing, and email categorization.</p><div class="bg-gradient-to-r from-aurora/20 to-plasma/20 rounded-xl p-6 mb-6"><div class="text-4xl font-bold text-aurora mb-2">70%</div><p class="text-gray-300">of customer inquiries can be handled by AI chatbots.</p></div><h3 class="text-xl font-semibold text-aurora mb-4 mt-8">Scale: Multiply Your Capabilities</h3><p class="text-gray-300 mb-4">One person with AI tools can write descriptions for thousands of SKUs, manage support for 10,000+ customers, and analyze weeks of sales data.</p><h3 class="text-xl font-semibold text-aurora mb-4 mt-8">Customer Experience: Always-On Excellence</h3><p class="text-gray-300 mb-4">24/7 support, hyper-relevant suggestions, personalized experiences, and proactive issue resolution.</p><div class="bg-white/5 rounded-xl p-6 mt-8 border border-white/10"><h4 class="font-semibold text-white mb-4">Bottom Line Impact</h4><div class="grid grid-cols-3 gap-4 text-center"><div><div class="text-2xl font-bold text-aurora">+35%</div><div class="text-sm text-gray-400">Revenue from personalization</div></div><div><div class="text-2xl font-bold text-plasma">-60%</div><div class="text-sm text-gray-400">Support ticket volume</div></div><div><div class="text-2xl font-bold text-nova">4x</div><div class="text-sm text-gray-400">Content production speed</div></div></div></div>`,
+                            resources: [{ title: "AI ROI Calculator", url: "https://www.mckinsey.com/industries/retail/our-insights/ai-in-retail", type: "tool" }, { title: "AI in Small Business", url: "https://www.shopify.com/blog/ai-small-business", type: "case-study" }, { title: "Customer Experience Automation", url: "https://www.zendesk.com/blog/ai-customer-experience/", type: "guide" }],
+                            quiz: { question: "What percentage of customer inquiries can AI chatbots handle?", options: ["About 20%", "About 40%", "About 70%", "About 95%"], correctIndex: 2, explanation: "~70% of routine inquiries can be handled by AI chatbots." }
+                        }
+                    ]
                 },
-              },
-              {
-                id: "1.2",
-                title: "The 'Brain' of E-Commerce AI",
-                subtitle: "Core AI technologies powering online retail",
-                videoUrl: "",
-                content: `
-                                <h3 class="text-xl font-semibold text-aurora mb-4">Predictive Analytics</h3>
-                                <p class="text-gray-300 mb-4">Predictive analytics uses historical data to forecast future trends and behaviors. In e-commerce, this powers inventory management by predicting demand, helps anticipate sales spikes during holidays or promotions, forecasts customer lifetime value, and identifies potential churning customers before they leave.</p>
-                                <div class="bg-white/5 rounded-xl p-4 mb-4 border-l-4 border-plasma">
-                                    <p class="text-gray-400 italic">Example: A clothing retailer uses predictive analytics to order 40% more winter coats in October based on weather forecasts and historical sales data.</p>
-                                </div>
-                                
-                                <h3 class="text-xl font-semibold text-aurora mb-4 mt-8">Computer Vision</h3>
-                                <p class="text-gray-300 mb-4">Computer Vision enables AI to "see" and interpret images. E-commerce applications include visual search (letting customers find products by uploading photos), automatic product tagging and categorization, quality control in fulfillment centers, and augmented reality try-on experiences.</p>
-                                
-                                <h3 class="text-xl font-semibold text-aurora mb-4 mt-8">Personalization Engines</h3>
-                                <p class="text-gray-300 mb-4">Think Netflix recommendations, but for your online store. Personalization engines analyze customer behavior in real-time to deliver customized product recommendations, personalized email content, dynamic pricing based on user segments, and tailored homepage experiences.</p>
-                                <div class="grid md:grid-cols-2 gap-4 mt-6">
-                                    <div class="bg-aurora/10 rounded-xl p-4 border border-aurora/30">
-                                        <h4 class="font-semibold text-aurora mb-2">Input Data</h4>
-                                        <ul class="text-gray-300 text-sm space-y-1">
-                                            <li>• Browsing history</li>
-                                            <li>• Purchase history</li>
-                                            <li>• Cart abandonment</li>
-                                            <li>• Search queries</li>
-                                        </ul>
-                                    </div>
-                                    <div class="bg-plasma/10 rounded-xl p-4 border border-plasma/30">
-                                        <h4 class="font-semibold text-plasma mb-2">Output Actions</h4>
-                                        <ul class="text-gray-300 text-sm space-y-1">
-                                            <li>• Product suggestions</li>
-                                            <li>• Email timing</li>
-                                            <li>• Discount offers</li>
-                                            <li>• Content display</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            `,
-                quiz: {
-                  question:
-                    "Which AI technology would help a furniture store let customers see how a couch looks in their living room?",
-                  options: [
-                    "Predictive Analytics",
-                    "Natural Language Processing",
-                    "Computer Vision & Augmented Reality",
-                    "Machine Learning only",
-                  ],
-                  correctIndex: 2,
-                  explanation:
-                    "Computer Vision combined with Augmented Reality enables virtual try-on and visualization features, allowing customers to see products in their own space.",
+                {
+                    id: "phase-2", title: "Phase 2: Shopify – The Digital Storefront", subtitle: "Understanding Shopify's ecosystem", color: "plasma",
+                    lessons: [
+                        { id: "2.1", title: "What is Shopify?", subtitle: "Platform overview and core functions", videoId: "Doo9A5CL2to", videoType: "youtube",
+                            content: `<h3 class="text-xl font-semibold text-plasma mb-4">Platform Overview</h3><p class="text-gray-300 mb-4">Shopify is a hosted, all-in-one commerce platform (SaaS) for setting up online stores. It's your digital storefront, warehouse manager, and cashier combined.</p><div class="bg-plasma/10 rounded-xl p-6 mb-6 border border-plasma/30"><h4 class="font-semibold text-plasma mb-3">Why "Hosted" Matters</h4><p class="text-gray-300">Unlike WooCommerce, Shopify handles all infrastructure—servers, security, updates, maintenance.</p></div><h3 class="text-xl font-semibold text-plasma mb-4 mt-8">Core Functions</h3><div class="grid md:grid-cols-2 gap-4"><div class="bg-white/5 rounded-xl p-4"><h4 class="font-semibold mb-2">💳 Payment Processing</h4><p class="text-gray-400 text-sm">100+ payment methods with fraud protection.</p></div><div class="bg-white/5 rounded-xl p-4"><h4 class="font-semibold mb-2">📦 Inventory Management</h4><p class="text-gray-400 text-sm">Track stock, alerts, variants, multi-location sync.</p></div><div class="bg-white/5 rounded-xl p-4"><h4 class="font-semibold mb-2">🌐 Website Hosting</h4><p class="text-gray-400 text-sm">Fast, secure hosting with SSL and 99.99% uptime.</p></div><div class="bg-white/5 rounded-xl p-4"><h4 class="font-semibold mb-2">🚚 Shipping & Tracking</h4><p class="text-gray-400 text-sm">Integrated rates, labels, auto tracking updates.</p></div></div>`,
+                            resources: [{ title: "Shopify Help Center", url: "https://help.shopify.com/", type: "documentation" }, { title: "Getting Started with Shopify", url: "https://www.shopify.com/blog/how-to-start-an-online-store", type: "tutorial" }, { title: "Shopify Academy", url: "https://academy.shopify.com/", type: "course" }],
+                            quiz: { question: "What type of platform is Shopify?", options: ["Self-hosted open-source", "Hosted SaaS platform", "Desktop application", "Mobile-only platform"], correctIndex: 1, explanation: "Shopify is a hosted SaaS platform handling all technical infrastructure." }
+                        },
+                        { id: "2.2", title: "The Shopify Ecosystem", subtitle: "Themes, apps, and omnichannel selling", videoId: "uorQJ_ucDhg", videoType: "youtube",
+                            content: `<h3 class="text-xl font-semibold text-plasma mb-4">Themes: Your Store's Visual Identity</h3><p class="text-gray-300 mb-4">Themes control visual design and layout—mobile-responsive, customizable, conversion-optimized.</p><h3 class="text-xl font-semibold text-plasma mb-4 mt-8">The App Store</h3><p class="text-gray-300 mb-4">8,000+ apps for loyalty programs, dropshipping, email marketing, reviews, and analytics.</p><div class="bg-gradient-to-r from-plasma/20 to-nova/20 rounded-xl p-6 mb-6"><div class="flex items-center gap-4"><div class="text-4xl font-bold text-plasma">8,000+</div><div class="text-gray-300">Apps in the Shopify ecosystem</div></div></div><h3 class="text-xl font-semibold text-plasma mb-4 mt-8">Shopify POS</h3><p class="text-gray-300 mb-4">Sell in physical locations while keeping inventory synced—unified reporting, customer profiles everywhere.</p><div class="bg-white/5 rounded-xl p-6 mt-6"><h4 class="font-semibold text-white mb-4">Omnichannel Selling</h4><div class="flex flex-wrap gap-3"><span class="px-3 py-1 rounded-full bg-plasma/20 text-plasma text-sm">Online Store</span><span class="px-3 py-1 rounded-full bg-aurora/20 text-aurora text-sm">In-Person (POS)</span><span class="px-3 py-1 rounded-full bg-nova/20 text-nova text-sm">Facebook & Instagram</span><span class="px-3 py-1 rounded-full bg-solar/20 text-solar text-sm">Amazon</span><span class="px-3 py-1 rounded-full bg-white/20 text-white text-sm">Google Shopping</span></div></div>`,
+                            resources: [{ title: "Shopify Theme Store", url: "https://themes.shopify.com/", type: "tool" }, { title: "Shopify App Store", url: "https://apps.shopify.com/", type: "tool" }, { title: "Shopify POS Guide", url: "https://www.shopify.com/pos", type: "documentation" }, { title: "Best Shopify Apps", url: "https://www.shopify.com/blog/best-shopify-apps", type: "article" }],
+                            quiz: { question: "What is Shopify POS used for?", options: ["Product descriptions", "Selling in physical locations with synced inventory", "Email campaigns", "Building themes"], correctIndex: 1, explanation: "Shopify POS enables omnichannel selling with synced inventory." }
+                        },
+                        { id: "2.3", title: "Key Data Inputs", subtitle: "Where AI lives in your Shopify store", videoId: "uUkIiWTe2aA", videoType: "youtube",
+                            content: `<h3 class="text-xl font-semibold text-plasma mb-4">Your Data Gold Mine</h3><p class="text-gray-300 mb-4">AI is powered by three critical data types from your Shopify store:</p><div class="space-y-4"><div class="glass-card rounded-xl p-5"><h4 class="font-semibold text-aurora mb-2">📦 Product Data</h4><p class="text-gray-400 text-sm">Titles, descriptions, SKUs, images, categories—foundation for AI content and search.</p></div><div class="glass-card rounded-xl p-5"><h4 class="font-semibold text-plasma mb-2">👥 Customer Data</h4><p class="text-gray-400 text-sm">Purchase history, browsing behavior, location, email engagement—powers personalization.</p></div><div class="glass-card rounded-xl p-5"><h4 class="font-semibold text-nova mb-2">📊 Sales Data</h4><p class="text-gray-400 text-sm">Revenue trends, conversion rates, cart abandonment, AOV—drives predictions and optimization.</p></div></div>`,
+                            resources: [{ title: "Shopify Analytics Guide", url: "https://help.shopify.com/en/manual/reports-and-analytics", type: "documentation" }, { title: "Data-Driven E-commerce", url: "https://www.shopify.com/blog/ecommerce-analytics", type: "article" }, { title: "Shopify API Docs", url: "https://shopify.dev/docs/api", type: "documentation" }],
+                            quiz: { question: "Which data predicts when products will run out of stock?", options: ["Browsing behavior only", "Product images", "Sales data + inventory levels", "Email addresses"], correctIndex: 2, explanation: "AI combines sales history with inventory to predict demand." }
+                        }
+                    ]
                 },
-              },
-              {
-                id: "1.3",
-                title: "Why AI Matters for Merchants",
-                subtitle: "The competitive advantages of AI adoption",
-                videoUrl: "",
-                content: `
-                                <h3 class="text-xl font-semibold text-aurora mb-4">Efficiency: Automate the Mundane</h3>
-                                <p class="text-gray-300 mb-4">AI excels at handling repetitive, time-consuming tasks that drain your resources. This includes automated data entry and inventory updates, instant FAQ responses via chatbots, automatic order processing and tracking updates, and smart email categorization and responses.</p>
-                                <div class="bg-gradient-to-r from-aurora/20 to-plasma/20 rounded-xl p-6 mb-6">
-                                    <div class="text-4xl font-bold text-aurora mb-2">70%</div>
-                                    <p class="text-gray-300">of customer service inquiries can be handled by AI chatbots, freeing your team for complex issues.</p>
-                                </div>
-                                
-                                <h3 class="text-xl font-semibold text-aurora mb-4 mt-8">Scale: Multiply Your Capabilities</h3>
-                                <p class="text-gray-300 mb-4">AI allows small teams to compete with large enterprises. A single person with AI tools can write product descriptions for thousands of SKUs, manage customer support for 10,000+ customers, analyze sales data that would take analysts weeks, and create marketing content across multiple channels.</p>
-                                
-                                <h3 class="text-xl font-semibold text-aurora mb-4 mt-8">Customer Experience: Always-On Excellence</h3>
-                                <p class="text-gray-300 mb-4">Modern consumers expect instant, personalized service. AI delivers 24/7 customer support availability, hyper-relevant product suggestions, personalized shopping experiences, and proactive issue resolution.</p>
-                                
-                                <div class="bg-white/5 rounded-xl p-6 mt-8 border border-white/10">
-                                    <h4 class="font-semibold text-white mb-4">The Bottom Line Impact</h4>
-                                    <div class="grid grid-cols-3 gap-4 text-center">
-                                        <div>
-                                            <div class="text-2xl font-bold text-aurora">+35%</div>
-                                            <div class="text-sm text-gray-400">Revenue from personalization</div>
-                                        </div>
-                                        <div>
-                                            <div class="text-2xl font-bold text-plasma">-60%</div>
-                                            <div class="text-sm text-gray-400">Support ticket volume</div>
-                                        </div>
-                                        <div>
-                                            <div class="text-2xl font-bold text-nova">4x</div>
-                                            <div class="text-sm text-gray-400">Content production speed</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            `,
-                quiz: {
-                  question:
-                    "What percentage of customer service inquiries can typically be handled by AI chatbots?",
-                  options: ["About 20%", "About 40%", "About 70%", "About 95%"],
-                  correctIndex: 2,
-                  explanation:
-                    "Studies show that approximately 70% of routine customer inquiries can be effectively handled by AI chatbots, allowing human agents to focus on complex issues.",
-                },
-              },
-            ],
-          },
-          {
-            id: "phase-2",
-            title: "Phase 2: Shopify – The Digital Storefront",
-            subtitle: "Understanding Shopify's ecosystem and capabilities",
-            color: "plasma",
-            lessons: [
-              {
-                id: "2.1",
-                title: "What is Shopify?",
-                subtitle: "Platform overview and core functions",
-                videoUrl: "",
-                content: `
-                                <h3 class="text-xl font-semibold text-plasma mb-4">Platform Overview</h3>
-                                <p class="text-gray-300 mb-4">Shopify is a hosted, all-in-one commerce platform (SaaS - Software as a Service) that allows anyone to set up an online store and sell products. Think of it as your digital storefront, warehouse manager, and cashier all rolled into one platform.</p>
-                                
-                                <div class="bg-plasma/10 rounded-xl p-6 mb-6 border border-plasma/30">
-                                    <h4 class="font-semibold text-plasma mb-3">Why "Hosted" Matters</h4>
-                                    <p class="text-gray-300">Unlike self-hosted solutions like WooCommerce, Shopify handles all the technical infrastructure—servers, security, updates, and maintenance. You focus on selling, they handle the tech.</p>
-                                </div>
-                                
-                                <h3 class="text-xl font-semibold text-plasma mb-4 mt-8">Core Functions</h3>
-                                <div class="grid md:grid-cols-2 gap-4">
-                                    <div class="bg-white/5 rounded-xl p-4">
-                                        <div class="flex items-center gap-3 mb-3">
-                                            <div class="w-10 h-10 rounded-lg bg-aurora/20 flex items-center justify-center">
-                                                <svg class="w-5 h-5 text-aurora" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
-                                            </div>
-                                            <h4 class="font-semibold">Payment Processing</h4>
-                                        </div>
-                                        <p class="text-gray-400 text-sm">Accept credit cards, PayPal, Apple Pay, and 100+ payment methods with built-in fraud protection.</p>
-                                    </div>
-                                    <div class="bg-white/5 rounded-xl p-4">
-                                        <div class="flex items-center gap-3 mb-3">
-                                            <div class="w-10 h-10 rounded-lg bg-plasma/20 flex items-center justify-center">
-                                                <svg class="w-5 h-5 text-plasma" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-                                            </div>
-                                            <h4 class="font-semibold">Inventory Management</h4>
-                                        </div>
-                                        <p class="text-gray-400 text-sm">Track stock levels, set low-inventory alerts, manage variants, and sync across multiple locations.</p>
-                                    </div>
-                                    <div class="bg-white/5 rounded-xl p-4">
-                                        <div class="flex items-center gap-3 mb-3">
-                                            <div class="w-10 h-10 rounded-lg bg-nova/20 flex items-center justify-center">
-                                                <svg class="w-5 h-5 text-nova" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
-                                            </div>
-                                            <h4 class="font-semibold">Website Hosting</h4>
-                                        </div>
-                                        <p class="text-gray-400 text-sm">Fast, secure hosting with SSL certificates, CDN, and 99.99% uptime guarantee.</p>
-                                    </div>
-                                    <div class="bg-white/5 rounded-xl p-4">
-                                        <div class="flex items-center gap-3 mb-3">
-                                            <div class="w-10 h-10 rounded-lg bg-solar/20 flex items-center justify-center">
-                                                <svg class="w-5 h-5 text-solar" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/></svg>
-                                            </div>
-                                            <h4 class="font-semibold">Shipping & Tracking</h4>
-                                        </div>
-                                        <p class="text-gray-400 text-sm">Integrated shipping rates, label printing, and automatic tracking updates to customers.</p>
-                                    </div>
-                                </div>
-                            `,
-                quiz: {
-                  question: "What type of platform is Shopify?",
-                  options: [
-                    "Self-hosted open-source platform",
-                    "Hosted SaaS (Software as a Service) platform",
-                    "Desktop application",
-                    "Mobile-only platform",
-                  ],
-                  correctIndex: 1,
-                  explanation:
-                    "Shopify is a hosted SaaS platform, meaning they handle all the technical infrastructure while you focus on running your business.",
-                },
-              },
-              {
-                id: "2.2",
-                title: "The Shopify Ecosystem",
-                subtitle: "Themes, apps, and omnichannel selling",
-                videoUrl: "",
-                content: `
-                                <h3 class="text-xl font-semibold text-plasma mb-4">Themes: Your Store's Visual Identity</h3>
-                                <p class="text-gray-300 mb-4">Themes are the "skin" of your store—they control the visual design and layout. Shopify offers both free and premium themes, all of which are mobile-responsive, customizable without code, and optimized for conversion.</p>
-                                
-                                <div class="bg-white/5 rounded-xl p-4 mb-6 border-l-4 border-plasma">
-                                    <p class="text-gray-400 italic">Pro Tip: Choose a theme that matches your brand aesthetic and product type. A jewelry store needs different visual priorities than an electronics retailer.</p>
-                                </div>
-                                
-                                <h3 class="text-xl font-semibold text-plasma mb-4 mt-8">The App Store: Extending Functionality</h3>
-                                <p class="text-gray-300 mb-4">Think of apps like plugins that add new features to your store. The Shopify App Store contains over 8,000 apps covering everything from loyalty programs and rewards, dropshipping and print-on-demand, email marketing integration, reviews and social proof, and advanced analytics.</p>
-                                
-                                <div class="bg-gradient-to-r from-plasma/20 to-nova/20 rounded-xl p-6 mb-6">
-                                    <div class="flex items-center gap-4">
-                                        <div class="text-4xl font-bold text-plasma">8,000+</div>
-                                        <div class="text-gray-300">Apps available in the Shopify ecosystem to extend your store's capabilities</div>
-                                    </div>
-                                </div>
-                                
-                                <h3 class="text-xl font-semibold text-plasma mb-4 mt-8">Shopify POS: Unified Commerce</h3>
-                                <p class="text-gray-300 mb-4">Shopify POS (Point of Sale) lets you sell in physical locations while keeping your online and offline inventory perfectly synced. Benefits include a single inventory system for all channels, customer profiles that work everywhere, unified reporting and analytics, and easy staff management.</p>
-                                
-                                <div class="bg-white/5 rounded-xl p-6 mt-6">
-                                    <h4 class="font-semibold text-white mb-4">Omnichannel Selling Channels</h4>
-                                    <div class="flex flex-wrap gap-3">
-                                        <span class="px-3 py-1 rounded-full bg-plasma/20 text-plasma text-sm">Online Store</span>
-                                        <span class="px-3 py-1 rounded-full bg-aurora/20 text-aurora text-sm">In-Person (POS)</span>
-                                        <span class="px-3 py-1 rounded-full bg-nova/20 text-nova text-sm">Facebook & Instagram</span>
-                                        <span class="px-3 py-1 rounded-full bg-solar/20 text-solar text-sm">Amazon</span>
-                                        <span class="px-3 py-1 rounded-full bg-white/20 text-white text-sm">Google Shopping</span>
-                                        <span class="px-3 py-1 rounded-full bg-plasma/20 text-plasma text-sm">TikTok</span>
-                                    </div>
-                                </div>
-                            `,
-                quiz: {
-                  question: "What is Shopify POS primarily used for?",
-                  options: [
-                    "Creating product descriptions",
-                    "Selling in physical locations while syncing with online inventory",
-                    "Managing email campaigns",
-                    "Building custom themes",
-                  ],
-                  correctIndex: 1,
-                  explanation:
-                    "Shopify POS enables omnichannel selling by letting you process in-person transactions while keeping inventory synced with your online store.",
-                },
-              },
-              {
-                id: "2.3",
-                title: "Key Data Inputs",
-                subtitle: "Where AI lives in your Shopify store",
-                videoUrl: "",
-                content: `
-                                <h3 class="text-xl font-semibold text-plasma mb-4">Understanding Your Data Gold Mine</h3>
-                                <p class="text-gray-300 mb-4">AI is only as powerful as the data it can access. Your Shopify store generates three critical types of data that fuel AI capabilities.</p>
-                                
-                                <div class="space-y-6">
-                                    <div class="glass-card rounded-xl p-6">
-                                        <div class="flex items-start gap-4">
-                                            <div class="w-12 h-12 rounded-xl bg-aurora/20 flex items-center justify-center flex-shrink-0">
-                                                <svg class="w-6 h-6 text-aurora" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-                                            </div>
-                                            <div>
-                                                <h4 class="font-semibold text-aurora text-lg mb-2">Product Data</h4>
-                                                <p class="text-gray-300 mb-3">The foundation of your catalog that AI uses to understand what you sell.</p>
-                                                <ul class="text-gray-400 text-sm space-y-1">
-                                                    <li>• <strong>Titles & Descriptions:</strong> Text that AI can enhance and optimize</li>
-                                                    <li>• <strong>SKUs & Variants:</strong> Structured data for inventory predictions</li>
-                                                    <li>• <strong>Images:</strong> Visual content for AI enhancement and search</li>
-                                                    <li>• <strong>Categories & Tags:</strong> Organization that powers recommendations</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="glass-card rounded-xl p-6">
-                                        <div class="flex items-start gap-4">
-                                            <div class="w-12 h-12 rounded-xl bg-plasma/20 flex items-center justify-center flex-shrink-0">
-                                                <svg class="w-6 h-6 text-plasma" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-                                            </div>
-                                            <div>
-                                                <h4 class="font-semibold text-plasma text-lg mb-2">Customer Data</h4>
-                                                <p class="text-gray-300 mb-3">Behavioral and demographic information that powers personalization.</p>
-                                                <ul class="text-gray-400 text-sm space-y-1">
-                                                    <li>• <strong>Purchase History:</strong> What they've bought and when</li>
-                                                    <li>• <strong>Browsing Behavior:</strong> Products viewed, time spent, paths taken</li>
-                                                    <li>• <strong>Location Data:</strong> Geographic patterns and preferences</li>
-                                                    <li>• <strong>Contact Information:</strong> Email engagement and communication history</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="glass-card rounded-xl p-6">
-                                        <div class="flex items-start gap-4">
-                                            <div class="w-12 h-12 rounded-xl bg-nova/20 flex items-center justify-center flex-shrink-0">
-                                                <svg class="w-6 h-6 text-nova" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-                                            </div>
-                                            <div>
-                                                <h4 class="font-semibold text-nova text-lg mb-2">Sales Data</h4>
-                                                <p class="text-gray-300 mb-3">Performance metrics that AI uses for predictions and optimization.</p>
-                                                <ul class="text-gray-400 text-sm space-y-1">
-                                                    <li>• <strong>Revenue Trends:</strong> Daily, weekly, seasonal patterns</li>
-                                                    <li>• <strong>Conversion Rates:</strong> What's working and what isn't</li>
-                                                    <li>• <strong>Cart Abandonment:</strong> Lost opportunities to recover</li>
-                                                    <li>• <strong>Average Order Value:</strong> Upselling and cross-selling potential</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            `,
-                quiz: {
-                  question:
-                    "Which type of data would AI use to predict when a product will run out of stock?",
-                  options: [
-                    "Customer browsing behavior only",
-                    "Product images",
-                    "Sales data combined with inventory levels",
-                    "Customer email addresses",
-                  ],
-                  correctIndex: 2,
-                  explanation:
-                    "AI combines historical sales data with current inventory levels to predict future demand and optimal reorder points.",
-                },
-              },
-            ],
-          },
-          {
-            id: "phase-3",
-            title: "Phase 3: Using AI with Shopify",
-            subtitle: "Hands-on application of AI tools",
-            color: "nova",
-            lessons: [
-              {
-                id: "3.1",
-                title: "Shopify Magic & Sidekick",
-                subtitle: "Built-in AI tools in your admin panel",
-                videoUrl: "",
-                content: `
-                                <h3 class="text-xl font-semibold text-nova mb-4">Shopify Magic: AI at Your Fingertips</h3>
-                                <p class="text-gray-300 mb-4">Shopify Magic is a suite of AI features integrated directly into your admin panel—and it's free to use. These tools are designed to help you work faster and smarter without needing any technical expertise.</p>
-                                
-                                <div class="bg-nova/10 rounded-xl p-6 mb-6 border border-nova/30">
-                                    <h4 class="font-semibold text-nova mb-3">Key Shopify Magic Features</h4>
-                                    <div class="grid md:grid-cols-2 gap-4">
-                                        <div class="flex items-start gap-2">
-                                            <span class="text-nova">✦</span>
-                                            <span class="text-gray-300">Auto-generate product descriptions</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="text-nova">✦</span>
-                                            <span class="text-gray-300">Create email subject lines</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="text-nova">✦</span>
-                                            <span class="text-gray-300">Generate blog post content</span>
-                                        </div>
-                                        <div class="flex items-start gap-2">
-                                            <span class="text-nova">✦</span>
-                                            <span class="text-gray-300">Edit product images</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <h3 class="text-xl font-semibold text-nova mb-4 mt-8">Sidekick: Your AI Assistant</h3>
-                                <p class="text-gray-300 mb-4">Sidekick is a conversational AI assistant that lives in your Shopify admin sidebar. You can literally "talk" to your store and ask questions or give commands.</p>
-                                
-                                <h4 class="font-semibold text-white mb-3 mt-6">Prompt Engineering for Sidekick</h4>
-                                <p class="text-gray-300 mb-4">The key to getting great results from Sidekick is asking the right questions:</p>
-                                
-                                <div class="space-y-3 mb-6">
-                                    <div class="bg-white/5 rounded-lg p-4 border-l-4 border-aurora">
-                                        <p class="text-sm text-gray-400 mb-1">Analytics Query</p>
-                                        <p class="text-white font-mono">"Why did sales drop last week compared to the week before?"</p>
-                                    </div>
-                                    <div class="bg-white/5 rounded-lg p-4 border-l-4 border-plasma">
-                                        <p class="text-sm text-gray-400 mb-1">Action Command</p>
-                                        <p class="text-white font-mono">"Start a 20% discount for my summer collection that ends Sunday"</p>
-                                    </div>
-                                    <div class="bg-white/5 rounded-lg p-4 border-l-4 border-nova">
-                                        <p class="text-sm text-gray-400 mb-1">Inventory Question</p>
-                                        <p class="text-white font-mono">"Which products are running low on stock?"</p>
-                                    </div>
-                                </div>
-                                
-                                <h3 class="text-xl font-semibold text-nova mb-4 mt-8">Mobile Access</h3>
-                                <p class="text-gray-300">Access Shopify Magic and Sidekick from the Shopify mobile app, allowing you to manage your store with AI assistance from anywhere.</p>
-                            `,
-                quiz: {
-                  question: "What is Sidekick in the Shopify ecosystem?",
-                  options: [
-                    "A third-party analytics app",
-                    "A conversational AI assistant in the admin sidebar",
-                    "A payment processing feature",
-                    "A theme customization tool",
-                  ],
-                  correctIndex: 1,
-                  explanation:
-                    "Sidekick is Shopify's built-in conversational AI assistant that allows you to interact with your store using natural language commands and questions.",
-                },
-              },
-              {
-                id: "3.2",
-                title: "AI for Content & Marketing",
-                subtitle: "Automating content creation at scale",
-                videoUrl: "",
-                content: `
-                                <h3 class="text-xl font-semibold text-nova mb-4">Product Descriptions: SEO-Optimized Automatically</h3>
-                                <p class="text-gray-300 mb-4">Writing unique descriptions for hundreds of products is exhausting. AI can generate SEO-friendly product text that matches your brand voice, includes relevant keywords, highlights key features and benefits, and maintains consistency across your catalog.</p>
-                                
-                                <div class="bg-white/5 rounded-xl p-6 mb-6">
-                                    <h4 class="font-semibold text-white mb-3">Before & After Example</h4>
-                                    <div class="grid md:grid-cols-2 gap-4">
-                                        <div class="bg-red-500/10 rounded-lg p-4 border border-red-500/30">
-                                            <p class="text-sm text-red-400 mb-2">❌ Generic Input</p>
-                                            <p class="text-gray-300 text-sm">"Blue t-shirt, cotton, medium size"</p>
-                                        </div>
-                                        <div class="bg-aurora/10 rounded-lg p-4 border border-aurora/30">
-                                            <p class="text-sm text-aurora mb-2">✓ AI-Enhanced Output</p>
-                                            <p class="text-gray-300 text-sm">"Experience everyday comfort with our Classic Blue Tee. Made from 100% organic cotton, this medium-fit shirt offers breathable softness perfect for any occasion."</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <h3 class="text-xl font-semibold text-nova mb-4 mt-8">Email Marketing Automation</h3>
-                                <p class="text-gray-300 mb-4">AI supercharges your email marketing by generating compelling subject lines that boost open rates, writing personalized body copy for segments, determining optimal send times based on customer behavior, and A/B testing variations automatically.</p>
-                                
-                                <h3 class="text-xl font-semibold text-nova mb-4 mt-8">Blog Writing for Traffic</h3>
-                                <p class="text-gray-300 mb-4">Content marketing drives organic traffic. Use AI to create educational content that brings customers to your store:</p>
-                                
-                                <div class="bg-plasma/10 rounded-xl p-4 border border-plasma/30">
-                                    <p class="text-sm text-gray-400 mb-2">Example Prompt</p>
-                                    <p class="text-white font-mono">"Write a blog post about the benefits of organic cotton for sensitive skin, targeting eco-conscious parents"</p>
-                                </div>
-                                
-                                <div class="mt-6 grid grid-cols-3 gap-4 text-center">
-                                    <div class="bg-white/5 rounded-xl p-4">
-                                        <div class="text-2xl font-bold text-aurora">5x</div>
-                                        <div class="text-sm text-gray-400">Faster content creation</div>
-                                    </div>
-                                    <div class="bg-white/5 rounded-xl p-4">
-                                        <div class="text-2xl font-bold text-plasma">40%</div>
-                                        <div class="text-sm text-gray-400">Higher email open rates</div>
-                                    </div>
-                                    <div class="bg-white/5 rounded-xl p-4">
-                                        <div class="text-2xl font-bold text-nova">∞</div>
-                                        <div class="text-sm text-gray-400">Consistent brand voice</div>
-                                    </div>
-                                </div>
-                            `,
-                quiz: {
-                  question:
-                    "How can AI improve email marketing for e-commerce stores?",
-                  options: [
-                    "Only by sending emails faster",
-                    "By generating subject lines, personalizing content, and optimizing send times",
-                    "By replacing the need for an email list",
-                    "Only by creating images for emails",
-                  ],
-                  correctIndex: 1,
-                  explanation:
-                    "AI enhances email marketing holistically—from writing compelling subject lines to personalizing content for different segments and determining optimal send times based on behavior data.",
-                },
-              },
-              {
-                id: "3.3",
-                title: "AI for Visual Merchandising",
-                subtitle: "Transforming product imagery with AI",
-                videoUrl: "",
-                content: `
-                                <h3 class="text-xl font-semibold text-nova mb-4">Media Editor: Professional Photos Without a Studio</h3>
-                                <p class="text-gray-300 mb-4">Shopify's AI-powered Media Editor can transform your product photos instantly. Key capabilities include background removal (one-click isolation of products), background generation (place products in lifestyle scenes), and image enhancement (improve lighting, color, and clarity).</p>
-                                
-                                <div class="bg-gradient-to-r from-nova/20 to-plasma/20 rounded-xl p-6 mb-6">
-                                    <h4 class="font-semibold text-white mb-4">Transformation Examples</h4>
-                                    <div class="grid md:grid-cols-3 gap-4">
-                                        <div class="text-center">
-                                            <div class="w-16 h-16 mx-auto mb-2 rounded-xl bg-white/10 flex items-center justify-center">
-                                                <span class="text-2xl">👟</span>
-                                            </div>
-                                            <p class="text-sm text-gray-300">Plain white background → Mountain trail scene</p>
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="w-16 h-16 mx-auto mb-2 rounded-xl bg-white/10 flex items-center justify-center">
-                                                <span class="text-2xl">🛋️</span>
-                                            </div>
-                                            <p class="text-sm text-gray-300">Furniture cutout → Styled living room</p>
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="w-16 h-16 mx-auto mb-2 rounded-xl bg-white/10 flex items-center justify-center">
-                                                <span class="text-2xl">💄</span>
-                                            </div>
-                                            <p class="text-sm text-gray-300">Product shot → Vanity setting</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <h3 class="text-xl font-semibold text-nova mb-4 mt-8">Virtual Try-On: The Future of Online Shopping</h3>
-                                <p class="text-gray-300 mb-4">Augmented Reality (AR) combined with AI lets customers visualize products before buying. Applications include furniture placed in their actual room, glasses on their face, makeup on their skin tone, and clothing on their body type.</p>
-                                
-                                <div class="bg-white/5 rounded-xl p-6">
-                                    <h4 class="font-semibold text-white mb-4">Business Impact of Visual AI</h4>
-                                    <div class="space-y-3">
-                                        <div class="flex items-center gap-4">
-                                            <div class="w-full bg-white/10 rounded-full h-2">
-                                                <div class="bg-aurora h-2 rounded-full" style="width: 40%"></div>
-                                            </div>
-                                            <span class="text-sm text-gray-400 whitespace-nowrap">40% fewer returns</span>
-                                        </div>
-                                        <div class="flex items-center gap-4">
-                                            <div class="w-full bg-white/10 rounded-full h-2">
-                                                <div class="bg-plasma h-2 rounded-full" style="width: 94%"></div>
-                                            </div>
-                                            <span class="text-sm text-gray-400 whitespace-nowrap">94% higher conversion with AR</span>
-                                        </div>
-                                        <div class="flex items-center gap-4">
-                                            <div class="w-full bg-white/10 rounded-full h-2">
-                                                <div class="bg-nova h-2 rounded-full" style="width: 71%"></div>
-                                            </div>
-                                            <span class="text-sm text-gray-400 whitespace-nowrap">71% shop more with AR</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            `,
-                quiz: {
-                  question:
-                    "What can Shopify's AI Media Editor do with product photos?",
-                  options: [
-                    "Only compress file sizes",
-                    "Remove backgrounds and generate lifestyle scene backgrounds",
-                    "Only add watermarks",
-                    "Only crop images",
-                  ],
-                  correctIndex: 1,
-                  explanation:
-                    "Shopify's AI Media Editor can remove backgrounds with one click and generate contextual lifestyle backgrounds, transforming basic product shots into professional marketing images.",
-                },
-              },
-              {
-                id: "3.4",
-                title: "AI for Operations & Support",
-                subtitle: "Automating customer service and fraud detection",
-                videoUrl: "",
-                content: `
-                                <h3 class="text-xl font-semibold text-nova mb-4">Shopify Inbox: Smart Customer Support</h3>
-                                <p class="text-gray-300 mb-4">Shopify Inbox uses AI to provide instant, accurate responses to common customer questions. AI agents can instantly answer "Where is my order?", respond to return policy questions, provide product information, and handle FAQs 24/7 without human intervention.</p>
-                                
-                                <div class="bg-aurora/10 rounded-xl p-6 mb-6 border border-aurora/30">
-                                    <h4 class="font-semibold text-aurora mb-3">Smart Reply Examples</h4>
-                                    <div class="space-y-3">
-                                        <div class="flex gap-3">
-                                            <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-sm">👤</div>
-                                            <div class="bg-white/5 rounded-lg p-3 flex-1">
-                                                <p class="text-gray-300">"Where's my order #12345?"</p>
-                                            </div>
-                                        </div>
-                                        <div class="flex gap-3 justify-end">
-                                            <div class="bg-aurora/20 rounded-lg p-3 flex-1 max-w-md">
-                                                <p class="text-gray-300">"Your order #12345 shipped yesterday via USPS and is expected to arrive Thursday. Here's your tracking link: [link]"</p>
-                                            </div>
-                                            <div class="w-8 h-8 rounded-full bg-aurora/20 flex items-center justify-center text-sm">🤖</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <h3 class="text-xl font-semibold text-nova mb-4 mt-8">Fraud Detection: Protecting Your Revenue</h3>
-                                <p class="text-gray-300 mb-4">Shopify automatically flags "High Risk" orders using machine learning patterns that analyze shipping/billing mismatches, unusual purchase patterns, known fraud indicators, and IP and device fingerprinting.</p>
-                                
-                                <div class="grid md:grid-cols-2 gap-4 mb-6">
-                                    <div class="bg-red-500/10 rounded-xl p-4 border border-red-500/30">
-                                        <h4 class="font-semibold text-red-400 mb-2">⚠️ High Risk Indicators</h4>
-                                        <ul class="text-gray-300 text-sm space-y-1">
-                                            <li>• Multiple failed payment attempts</li>
-                                            <li>• Shipping to freight forwarder</li>
-                                            <li>• Unusual order size/value</li>
-                                        </ul>
-                                    </div>
-                                    <div class="bg-aurora/10 rounded-xl p-4 border border-aurora/30">
-                                        <h4 class="font-semibold text-aurora mb-2">✓ Low Risk Indicators</h4>
-                                        <ul class="text-gray-300 text-sm space-y-1">
-                                            <li>• Verified payment method</li>
-                                            <li>• Matching billing/shipping</li>
-                                            <li>• Consistent purchase history</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                
-                                <h3 class="text-xl font-semibold text-nova mb-4 mt-8">Smart Inventory Management</h3>
-                                <p class="text-gray-300 mb-4">AI predicts exactly when to restock based on historical sales velocity, seasonal trends, lead time from suppliers, and current stock levels. Never miss a sale due to stockouts or tie up cash in excess inventory.</p>
-                            `,
-                quiz: {
-                  question: "How does Shopify's fraud detection system work?",
-                  options: [
-                    "It blocks all international orders",
-                    "It uses ML to analyze patterns like shipping/billing mismatches and unusual behavior",
-                    "It requires manual review of every order",
-                    "It only checks credit card numbers",
-                  ],
-                  correctIndex: 1,
-                  explanation:
-                    "Shopify's fraud detection uses machine learning to analyze multiple signals including shipping/billing mismatches, purchase patterns, and device fingerprinting to flag potentially fraudulent orders.",
-                },
-              },
-              {
-                id: "3.5",
-                title: "Third-Party AI Apps",
-                subtitle: "Extending capabilities beyond built-in tools",
-                videoUrl: "",
-                content: `
-                                <h3 class="text-xl font-semibold text-nova mb-4">When to Go Beyond Built-In Tools</h3>
-                                <p class="text-gray-300 mb-4">While Shopify Magic and Sidekick are powerful, specialized AI apps can provide deeper functionality for specific needs. Consider third-party apps when you need advanced dynamic pricing optimization, deep customer segmentation and RFM analysis, sophisticated product recommendation engines, advanced SEO automation, and AI-powered review management.</p>
-                                
-                                <h3 class="text-xl font-semibold text-nova mb-4 mt-8">Categories of AI Apps</h3>
-                                
-                                <div class="grid gap-4 mb-6">
-                                    <div class="glass-card rounded-xl p-5">
-                                        <div class="flex items-center gap-4 mb-3">
-                                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-aurora to-plasma flex items-center justify-center">
-                                                <span class="text-xl">💰</span>
-                                            </div>
-                                            <div>
-                                                <h4 class="font-semibold text-white">Dynamic Pricing</h4>
-                                                <p class="text-sm text-gray-400">Automatically adjust prices based on demand, competition, and inventory</p>
-                                            </div>
-                                        </div>
-                                        <div class="flex flex-wrap gap-2">
-                                            <span class="px-2 py-1 rounded bg-white/5 text-xs text-gray-400">Competitor monitoring</span>
-                                            <span class="px-2 py-1 rounded bg-white/5 text-xs text-gray-400">Demand forecasting</span>
-                                            <span class="px-2 py-1 rounded bg-white/5 text-xs text-gray-400">Margin optimization</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="glass-card rounded-xl p-5">
-                                        <div class="flex items-center gap-4 mb-3">
-                                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-plasma to-nova flex items-center justify-center">
-                                                <span class="text-xl">🎯</span>
-                                            </div>
-                                            <div>
-                                                <h4 class="font-semibold text-white">Customer Segmentation</h4>
-                                                <p class="text-sm text-gray-400">Group customers by behavior, value, and likelihood to purchase</p>
-                                            </div>
-                                        </div>
-                                        <div class="flex flex-wrap gap-2">
-                                            <span class="px-2 py-1 rounded bg-white/5 text-xs text-gray-400">RFM analysis</span>
-                                            <span class="px-2 py-1 rounded bg-white/5 text-xs text-gray-400">Churn prediction</span>
-                                            <span class="px-2 py-1 rounded bg-white/5 text-xs text-gray-400">CLV calculation</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="glass-card rounded-xl p-5">
-                                        <div class="flex items-center gap-4 mb-3">
-                                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-nova to-solar flex items-center justify-center">
-                                                <span class="text-xl">🔮</span>
-                                            </div>
-                                            <div>
-                                                <h4 class="font-semibold text-white">Product Recommendations</h4>
-                                                <p class="text-sm text-gray-400">Sophisticated algorithms for upselling and cross-selling</p>
-                                            </div>
-                                        </div>
-                                        <div class="flex flex-wrap gap-2">
-                                            <span class="px-2 py-1 rounded bg-white/5 text-xs text-gray-400">Collaborative filtering</span>
-                                            <span class="px-2 py-1 rounded bg-white/5 text-xs text-gray-400">Visual similarity</span>
-                                            <span class="px-2 py-1 rounded bg-white/5 text-xs text-gray-400">Bundle suggestions</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="bg-white/5 rounded-xl p-6 border border-white/10">
-                                    <h4 class="font-semibold text-white mb-4">Choosing the Right AI App</h4>
-                                    <div class="space-y-3">
-                                        <div class="flex items-start gap-3">
-                                            <span class="text-aurora font-bold">1.</span>
-                                            <p class="text-gray-300">Identify your biggest pain point or opportunity</p>
-                                        </div>
-                                        <div class="flex items-start gap-3">
-                                            <span class="text-plasma font-bold">2.</span>
-                                            <p class="text-gray-300">Check reviews and case studies from similar stores</p>
-                                        </div>
-                                        <div class="flex items-start gap-3">
-                                            <span class="text-nova font-bold">3.</span>
-                                            <p class="text-gray-300">Start with free trials before committing</p>
-                                        </div>
-                                        <div class="flex items-start gap-3">
-                                            <span class="text-solar font-bold">4.</span>
-                                            <p class="text-gray-300">Measure ROI after 30-60 days</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            `,
-                quiz: {
-                  question:
-                    "When should you consider using third-party AI apps instead of built-in Shopify tools?",
-                  options: [
-                    "Always, built-in tools are insufficient",
-                    "Never, built-in tools cover everything",
-                    "When you need specialized features like advanced dynamic pricing or deep customer segmentation",
-                    "Only when your store makes over $1 million",
-                  ],
-                  correctIndex: 2,
-                  explanation:
-                    "Third-party AI apps are valuable when you need specialized capabilities that go beyond Shopify's built-in tools, such as advanced pricing algorithms or sophisticated customer analytics.",
-                },
-              },
-            ],
-          },
-        ],
-      };
-
-      // ===============================
-      // STATE MANAGEMENT
-      // ===============================
-      let currentLesson = null;
-      let courseData = STATIC_COURSE_DATA;
-
-      // ===============================
-      // LOCALSTORAGE FUNCTIONS
-      // ===============================
-      function getStorageKey(key) {
-        return `ai_commerce_course_${key}`;
-      }
-
-      function saveToStorage(key, data) {
-        try {
-          localStorage.setItem(getStorageKey(key), JSON.stringify(data));
-          return true;
-        } catch (e) {
-          console.error("Storage error:", e);
-          return false;
-        }
-      }
-
-      function loadFromStorage(key) {
-        try {
-          const data = localStorage.getItem(getStorageKey(key));
-          return data ? JSON.parse(data) : null;
-        } catch (e) {
-          console.error("Storage error:", e);
-          return null;
-        }
-      }
-
-      function getUserData() {
-        return (
-          loadFromStorage("user") || { name: "", email: "", startedAt: null }
-        );
-      }
-
-      function saveUserData(data) {
-        return saveToStorage("user", data);
-      }
-
-      function getProgress() {
-        return (
-          loadFromStorage("progress") || {
-            completedLessons: [],
-            quizzesPassed: [],
-          }
-        );
-      }
-
-      function saveProgress(progress) {
-        return saveToStorage("progress", progress);
-      }
-
-      function getComments() {
-        return loadFromStorage("comments") || {};
-      }
-
-      function saveComments(comments) {
-        return saveToStorage("comments", comments);
-      }
-
-      // ===============================
-      // EXPORT/IMPORT FUNCTIONS
-      // ===============================
-      function exportProgress() {
-        const exportData = {
-          user: getUserData(),
-          progress: getProgress(),
-          comments: getComments(),
-          exportedAt: new Date().toISOString(),
-          version: "1.0",
+                {
+                    id: "phase-3", title: "Phase 3: Using AI with Shopify", subtitle: "Hands-on application of AI tools", color: "nova",
+                    lessons: [
+                        { id: "3.1", title: "Shopify Magic & Sidekick", subtitle: "Built-in AI tools in your admin panel", videoId: "duM5FsJ2BvQ", videoType: "youtube",
+                            content: `<h3 class="text-xl font-semibold text-nova mb-4">Shopify Magic</h3><p class="text-gray-300 mb-4">Free AI features in your admin panel for faster work without technical expertise.</p><div class="bg-nova/10 rounded-xl p-6 mb-6 border border-nova/30"><h4 class="font-semibold text-nova mb-3">Key Features</h4><div class="grid md:grid-cols-2 gap-4"><div class="flex gap-2"><span class="text-nova">✦</span><span class="text-gray-300">Auto-generate product descriptions</span></div><div class="flex gap-2"><span class="text-nova">✦</span><span class="text-gray-300">Create email subject lines</span></div><div class="flex gap-2"><span class="text-nova">✦</span><span class="text-gray-300">Generate blog content</span></div><div class="flex gap-2"><span class="text-nova">✦</span><span class="text-gray-300">Edit product images</span></div></div></div><h3 class="text-xl font-semibold text-nova mb-4 mt-8">Sidekick: AI Assistant</h3><p class="text-gray-300 mb-4">Conversational AI in your admin sidebar—"talk" to your store.</p><div class="space-y-3"><div class="bg-white/5 rounded-lg p-4 border-l-4 border-aurora"><p class="text-sm text-gray-400 mb-1">Analytics</p><p class="text-white font-mono text-sm">"Why did sales drop last week?"</p></div><div class="bg-white/5 rounded-lg p-4 border-l-4 border-plasma"><p class="text-sm text-gray-400 mb-1">Action</p><p class="text-white font-mono text-sm">"Start a 20% discount for summer collection"</p></div><div class="bg-white/5 rounded-lg p-4 border-l-4 border-nova"><p class="text-sm text-gray-400 mb-1">Inventory</p><p class="text-white font-mono text-sm">"Which products are low on stock?"</p></div></div>`,
+                            resources: [{ title: "Shopify Magic Guide", url: "https://www.shopify.com/magic", type: "documentation" }, { title: "Sidekick Tutorial", url: "https://help.shopify.com/en/manual/shopify-admin/sidekick", type: "tutorial" }, { title: "Shopify Mobile App", url: "https://www.shopify.com/mobile", type: "tool" }],
+                            quiz: { question: "What is Sidekick?", options: ["Analytics app", "Conversational AI assistant in admin sidebar", "Payment feature", "Theme tool"], correctIndex: 1, explanation: "Sidekick is Shopify's AI assistant for natural language commands." }
+                        },
+                        { id: "3.2", title: "AI for Content & Marketing", subtitle: "Automating content creation at scale", videoId: "duM5FsJ2BvQ", videoType: "youtube",
+                            content: `<h3 class="text-xl font-semibold text-nova mb-4">Product Descriptions: Auto SEO</h3><p class="text-gray-300 mb-4">AI generates SEO-friendly text matching your brand voice with relevant keywords.</p><div class="bg-white/5 rounded-xl p-6 mb-6"><h4 class="font-semibold text-white mb-3">Before & After</h4><div class="grid md:grid-cols-2 gap-4"><div class="bg-red-500/10 rounded-lg p-4 border border-red-500/30"><p class="text-sm text-red-400 mb-2">❌ Generic</p><p class="text-gray-300 text-sm">"Blue t-shirt, cotton, medium"</p></div><div class="bg-aurora/10 rounded-lg p-4 border border-aurora/30"><p class="text-sm text-aurora mb-2">✓ AI-Enhanced</p><p class="text-gray-300 text-sm">"Experience everyday comfort with our Classic Blue Tee. Made from 100% organic cotton..."</p></div></div></div><h3 class="text-xl font-semibold text-nova mb-4 mt-8">Email Marketing</h3><p class="text-gray-300 mb-4">AI supercharges emails: subject lines, personalized copy, optimal timing, A/B testing.</p><h3 class="text-xl font-semibold text-nova mb-4 mt-8">Blog Writing</h3><p class="text-gray-300 mb-4">Create educational content driving organic traffic.</p><div class="mt-6 grid grid-cols-3 gap-4 text-center"><div class="bg-white/5 rounded-xl p-4"><div class="text-2xl font-bold text-aurora">5x</div><div class="text-sm text-gray-400">Faster content</div></div><div class="bg-white/5 rounded-xl p-4"><div class="text-2xl font-bold text-plasma">40%</div><div class="text-sm text-gray-400">Higher open rates</div></div><div class="bg-white/5 rounded-xl p-4"><div class="text-2xl font-bold text-nova">∞</div><div class="text-sm text-gray-400">Brand consistency</div></div></div>`,
+                            resources: [{ title: "Shopify Email Marketing", url: "https://www.shopify.com/email-marketing", type: "tool" }, { title: "SEO Guide", url: "https://www.shopify.com/blog/ecommerce-seo", type: "guide" }, { title: "Klaviyo", url: "https://www.klaviyo.com/", type: "tool" }],
+                            quiz: { question: "How can AI improve email marketing?", options: ["Only sending faster", "Subject lines, personalization, and optimal timing", "Replacing email lists", "Only creating images"], correctIndex: 1, explanation: "AI enhances emails with subject lines, personalization, and timing." }
+                        },
+                        { id: "3.3", title: "AI for Visual Merchandising", subtitle: "Transforming product imagery", videoId: "HvLQzg2SLBE", videoType: "youtube",
+                            content: `<h3 class="text-xl font-semibold text-nova mb-4">Media Editor: Pro Photos Without a Studio</h3><p class="text-gray-300 mb-4">AI-powered photo transformation: background removal, lifestyle scene generation, image enhancement.</p><div class="bg-gradient-to-r from-nova/20 to-plasma/20 rounded-xl p-6 mb-6"><h4 class="font-semibold text-white mb-4">Transformations</h4><div class="grid md:grid-cols-3 gap-4 text-center"><div><span class="text-2xl">👟</span><p class="text-sm text-gray-300 mt-2">White background → Trail scene</p></div><div><span class="text-2xl">🛋️</span><p class="text-sm text-gray-300 mt-2">Cutout → Styled room</p></div><div><span class="text-2xl">💄</span><p class="text-sm text-gray-300 mt-2">Product shot → Vanity setting</p></div></div></div><h3 class="text-xl font-semibold text-nova mb-4 mt-8">Virtual Try-On</h3><p class="text-gray-300 mb-4">AR + AI lets customers visualize products: furniture in rooms, glasses on faces, makeup on skin.</p><div class="bg-white/5 rounded-xl p-6"><h4 class="font-semibold text-white mb-4">Business Impact</h4><div class="space-y-3"><div class="flex items-center gap-4"><div class="w-full bg-white/10 rounded-full h-2"><div class="bg-aurora h-2 rounded-full" style="width:40%"></div></div><span class="text-sm text-gray-400">40% fewer returns</span></div><div class="flex items-center gap-4"><div class="w-full bg-white/10 rounded-full h-2"><div class="bg-plasma h-2 rounded-full" style="width:94%"></div></div><span class="text-sm text-gray-400">94% higher conversion with AR</span></div></div></div>`,
+                            resources: [{ title: "Shopify Media Editor", url: "https://help.shopify.com/en/manual/products/product-media/edit-images", type: "tutorial" }, { title: "Remove.bg", url: "https://www.remove.bg/", type: "tool" }, { title: "Shopify AR", url: "https://www.shopify.com/ar", type: "documentation" }],
+                            quiz: { question: "What can Shopify's AI Media Editor do?", options: ["Only compress files", "Remove backgrounds and generate lifestyle scenes", "Only add watermarks", "Only crop"], correctIndex: 1, explanation: "AI Media Editor removes backgrounds and generates lifestyle scenes." }
+                        },
+                        { id: "3.4", title: "AI for Operations & Support", subtitle: "Automating service and fraud detection", videoId: "mJeNghZXtMo", videoType: "youtube",
+                            content: `<h3 class="text-xl font-semibold text-nova mb-4">Shopify Inbox: Smart Support</h3><p class="text-gray-300 mb-4">AI provides instant responses to common questions—"Where's my order?", returns, FAQs—24/7.</p><div class="bg-aurora/10 rounded-xl p-6 mb-6 border border-aurora/30"><div class="space-y-3"><div class="flex gap-3"><div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-sm">👤</div><div class="bg-white/5 rounded-lg p-3 flex-1"><p class="text-gray-300 text-sm">"Where's my order #12345?"</p></div></div><div class="flex gap-3 justify-end"><div class="bg-aurora/20 rounded-lg p-3 flex-1 max-w-md"><p class="text-gray-300 text-sm">"Your order shipped yesterday via USPS, arriving Thursday. Tracking: [link]"</p></div><div class="w-8 h-8 rounded-full bg-aurora/20 flex items-center justify-center text-sm">🤖</div></div></div></div><h3 class="text-xl font-semibold text-nova mb-4 mt-8">Fraud Detection</h3><p class="text-gray-300 mb-4">ML flags "High Risk" orders by analyzing mismatches, patterns, and device fingerprinting.</p><div class="grid md:grid-cols-2 gap-4 mb-6"><div class="bg-red-500/10 rounded-xl p-4 border border-red-500/30"><h4 class="font-semibold text-red-400 mb-2">⚠️ High Risk</h4><ul class="text-gray-300 text-sm space-y-1"><li>• Multiple failed payments</li><li>• Freight forwarder shipping</li><li>• Unusual order value</li></ul></div><div class="bg-aurora/10 rounded-xl p-4 border border-aurora/30"><h4 class="font-semibold text-aurora mb-2">✓ Low Risk</h4><ul class="text-gray-300 text-sm space-y-1"><li>• Verified payment</li><li>• Matching addresses</li><li>• Consistent history</li></ul></div></div><h3 class="text-xl font-semibold text-nova mb-4 mt-8">Smart Inventory</h3><p class="text-gray-300 mb-4">AI predicts restock timing based on sales velocity, seasons, and lead times.</p>`,
+                            resources: [{ title: "Shopify Inbox", url: "https://www.shopify.com/inbox", type: "documentation" }, { title: "Fraud Prevention", url: "https://help.shopify.com/en/manual/payments/fraud-prevention", type: "guide" }, { title: "Gorgias", url: "https://www.gorgias.com/", type: "tool" }, { title: "Tidio Chatbot", url: "https://www.tidio.com/", type: "tool" }],
+                            quiz: { question: "How does Shopify's fraud detection work?", options: ["Blocks all international orders", "ML analyzes patterns like address mismatches", "Manual review of every order", "Only checks card numbers"], correctIndex: 1, explanation: "ML analyzes multiple signals to flag fraudulent orders." }
+                        },
+                        { id: "3.5", title: "Third-Party AI Apps", subtitle: "Extending beyond built-in tools", videoId: "x7X9w_GIm1s", videoType: "youtube",
+                            content: `<h3 class="text-xl font-semibold text-nova mb-4">When to Go Beyond Built-In</h3><p class="text-gray-300 mb-4">Specialized apps provide deeper functionality: dynamic pricing, customer segmentation, recommendation engines, SEO automation.</p><h3 class="text-xl font-semibold text-nova mb-4 mt-8">AI App Categories</h3><div class="grid gap-4 mb-6"><div class="glass-card rounded-xl p-5"><div class="flex items-center gap-4 mb-3"><span class="text-2xl">💰</span><div><h4 class="font-semibold text-white">Dynamic Pricing</h4><p class="text-sm text-gray-400">Auto-adjust prices based on demand and competition</p></div></div></div><div class="glass-card rounded-xl p-5"><div class="flex items-center gap-4 mb-3"><span class="text-2xl">🎯</span><div><h4 class="font-semibold text-white">Customer Segmentation</h4><p class="text-sm text-gray-400">RFM analysis, churn prediction, CLV calculation</p></div></div></div><div class="glass-card rounded-xl p-5"><div class="flex items-center gap-4 mb-3"><span class="text-2xl">🔮</span><div><h4 class="font-semibold text-white">Recommendations</h4><p class="text-sm text-gray-400">Collaborative filtering, visual similarity, bundles</p></div></div></div></div><div class="bg-white/5 rounded-xl p-6 border border-white/10"><h4 class="font-semibold text-white mb-4">Choosing the Right App</h4><div class="space-y-3"><div class="flex gap-3"><span class="text-aurora font-bold">1.</span><p class="text-gray-300">Identify your biggest pain point</p></div><div class="flex gap-3"><span class="text-plasma font-bold">2.</span><p class="text-gray-300">Check reviews from similar stores</p></div><div class="flex gap-3"><span class="text-nova font-bold">3.</span><p class="text-gray-300">Start with free trials</p></div><div class="flex gap-3"><span class="text-solar font-bold">4.</span><p class="text-gray-300">Measure ROI after 30-60 days</p></div></div></div>`,
+                            resources: [{ title: "Shopify AI Apps", url: "https://apps.shopify.com/collections/ai-apps", type: "tool" }, { title: "Nosto Personalization", url: "https://www.nosto.com/", type: "tool" }, { title: "Prisync Pricing", url: "https://prisync.com/", type: "tool" }, { title: "Yotpo Reviews", url: "https://www.yotpo.com/", type: "tool" }],
+                            quiz: { question: "When should you use third-party AI apps?", options: ["Always", "Never", "When you need specialized features like advanced pricing", "Only at $1M+ revenue"], correctIndex: 2, explanation: "Third-party apps provide specialized capabilities beyond built-in tools." }
+                        }
+                    ]
+                }
+            ]
         };
-
-        const blob = new Blob([JSON.stringify(exportData, null, 2)], {
-          type: "application/json",
-        });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = `course-progress-${new Date().toISOString().split("T")[0]}.json`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-
-        showToast("Progress exported successfully!", "success");
-      }
-
-      function importProgress(event) {
-        const file = event.target.files[0];
-        if (!file) return;
-
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          try {
-            const data = JSON.parse(e.target.result);
-
-            if (data.user) saveUserData(data.user);
-            if (data.progress) saveProgress(data.progress);
-            if (data.comments) saveComments(data.comments);
-
-            showToast("Progress imported successfully!", "success");
-
-            // Check if user data exists and redirect
-            const user = getUserData();
-            if (user.name && user.email) {
-              showCoursePage();
-            }
-          } catch (err) {
-            showToast("Invalid file format", "error");
-          }
-        };
-        reader.readAsText(file);
-      }
-
-      // ===============================
-      // API/DATA LOADING
-      // ===============================
-      async function loadCourseData() {
-        // Try to fetch from API, fall back to static data
-        try {
-          // Simulated API call - replace with actual endpoint
-          // const response = await fetch('/api/course');
-          // if (response.ok) {
-          //     courseData = await response.json();
-          // }
-
-          // Using static data as fallback/default
-          courseData = STATIC_COURSE_DATA;
-        } catch (error) {
-          console.log("Using static course data");
-          courseData = STATIC_COURSE_DATA;
-        }
-
-        return courseData;
-      }
-
-      // ===============================
-      // UI FUNCTIONS
-      // ===============================
-      function showToast(message, type = "success") {
-        const toast = document.getElementById("toast");
-        const toastMessage = document.getElementById("toastMessage");
-        const toastIcon = document.getElementById("toastIcon");
-
-        toastMessage.textContent = message;
-
-        if (type === "error") {
-          toastIcon.innerHTML =
-            '<svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>';
-          toastIcon.className =
-            "w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center";
-        } else {
-          toastIcon.innerHTML =
-            '<svg class="w-4 h-4 text-aurora" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>';
-          toastIcon.className =
-            "w-8 h-8 rounded-full bg-aurora/20 flex items-center justify-center";
-        }
-
-        toast.classList.remove("translate-y-20", "opacity-0");
-        toast.classList.add("translate-y-0", "opacity-100");
-
-        setTimeout(() => {
-          toast.classList.add("translate-y-20", "opacity-0");
-          toast.classList.remove("translate-y-0", "opacity-100");
-        }, 3000);
-      }
-
-      function toggleSidebar() {
-        const sidebar = document.getElementById("sidebar");
-        sidebar.classList.toggle("-translate-x-full");
-      }
-
-      // ===============================
-      // COURSE NAVIGATION
-      // ===============================
-      function startCourse() {
-        const name = document.getElementById("userName").value.trim();
-        const email = document.getElementById("userEmail").value.trim();
-
-        if (!name || !email) {
-          showToast("Please enter your name and email", "error");
-          return;
-        }
-
-        if (!email.includes("@")) {
-          showToast("Please enter a valid email", "error");
-          return;
-        }
-
-        saveUserData({ name, email, startedAt: new Date().toISOString() });
-        showCoursePage();
-      }
-
-      function showCoursePage() {
-        document.getElementById("welcomePage").classList.add("hidden");
-        document.getElementById("coursePage").classList.remove("hidden");
-
-        const user = getUserData();
-        document.getElementById("displayName").textContent = user.name;
-        document.getElementById("userAvatar").textContent = user.name
-          .charAt(0)
-          .toUpperCase();
-        document.getElementById("dashboardName").textContent =
-          user.name.split(" ")[0];
-
-        renderSidebar();
-        showDashboard();
-        updateStats();
-      }
-
-      function showDashboard() {
-        document.getElementById("dashboardView").classList.remove("hidden");
-        document.getElementById("lessonView").classList.add("hidden");
-        renderPhaseCards();
-        updateStats();
-      }
-
-      function showLesson(lessonId) {
-        const lesson = findLesson(lessonId);
-        if (!lesson) return;
-
-        currentLesson = lesson;
-
-        document.getElementById("dashboardView").classList.add("hidden");
-        document.getElementById("lessonView").classList.remove("hidden");
-
-        // Update lesson content
-        const phase = findPhaseForLesson(lessonId);
-        document.getElementById("lessonPhase").textContent =
-          phase.title.split(":")[0];
-        document.getElementById("lessonTitle").textContent = lesson.title;
-        document.getElementById("lessonSubtitle").textContent = lesson.subtitle;
-        document.getElementById("lessonContent").innerHTML = lesson.content;
-
-        // Update video placeholder
-        document.getElementById("videoPlaceholder").textContent =
-          lesson.videoUrl ? "Loading video..." : `Video: ${lesson.title}`;
-
-        // Update status
-        updateLessonStatus(lessonId);
-
-        // Render quiz
-        renderQuiz(lesson);
-
-        // Render comments
-        renderComments(lessonId);
-
-        // Update navigation
-        updateNavButtons(lessonId);
-
-        // Update sidebar active state
-        document.querySelectorAll(".sidebar-item").forEach((item) => {
-          item.classList.remove("active");
-          if (item.dataset.lessonId === lessonId) {
-            item.classList.add("active");
-          }
-        });
-
-        // Close mobile sidebar
-        if (window.innerWidth < 1024) {
-          document.getElementById("sidebar").classList.add("-translate-x-full");
-        }
-
-        // Scroll to top
-        window.scrollTo(0, 0);
-      }
-
-      function findLesson(lessonId) {
-        for (const phase of courseData.phases) {
-          const lesson = phase.lessons.find((l) => l.id === lessonId);
-          if (lesson) return lesson;
-        }
-        return null;
-      }
-
-      function findPhaseForLesson(lessonId) {
-        for (const phase of courseData.phases) {
-          if (phase.lessons.find((l) => l.id === lessonId)) {
-            return phase;
-          }
-        }
-        return null;
-      }
-
-      function getAllLessons() {
-        const lessons = [];
-        for (const phase of courseData.phases) {
-          lessons.push(...phase.lessons);
-        }
-        return lessons;
-      }
-
-      function navigateLesson(direction) {
-        if (!currentLesson) return;
-
-        const lessons = getAllLessons();
-        const currentIndex = lessons.findIndex(
-          (l) => l.id === currentLesson.id,
-        );
-        const newIndex = currentIndex + direction;
-
-        if (newIndex >= 0 && newIndex < lessons.length) {
-          showLesson(lessons[newIndex].id);
-        }
-      }
-
-      function updateNavButtons(lessonId) {
-        const lessons = getAllLessons();
-        const currentIndex = lessons.findIndex((l) => l.id === lessonId);
-
-        document.getElementById("prevLesson").disabled = currentIndex === 0;
-        document.getElementById("nextLesson").disabled =
-          currentIndex === lessons.length - 1;
-
-        document
-          .getElementById("prevLesson")
-          .classList.toggle("opacity-50", currentIndex === 0);
-        document
-          .getElementById("nextLesson")
-          .classList.toggle("opacity-50", currentIndex === lessons.length - 1);
-      }
-
-      function updateLessonStatus(lessonId) {
-        const progress = getProgress();
-        const isCompleted = progress.completedLessons.includes(lessonId);
-        const statusEl = document.getElementById("lessonStatus");
-        const btn = document.getElementById("markCompleteBtn");
-
-        if (isCompleted) {
-          statusEl.innerHTML =
-            '<span class="w-3 h-3 rounded-full bg-aurora"></span><span class="text-sm text-aurora">Completed</span>';
-          btn.innerHTML =
-            '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Completed';
-          btn.classList.remove("btn-secondary");
-          btn.classList.add("bg-aurora/20", "text-aurora");
-        } else {
-          statusEl.innerHTML =
-            '<span class="w-3 h-3 rounded-full bg-gray-500"></span><span class="text-sm">In Progress</span>';
-          btn.innerHTML =
-            '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Mark Complete';
-          btn.classList.add("btn-secondary");
-          btn.classList.remove("bg-aurora/20", "text-aurora");
-        }
-      }
-
-      // ===============================
-      // RENDERING FUNCTIONS
-      // ===============================
-      function renderSidebar() {
-        const nav = document.getElementById("lessonNav");
-        const progress = getProgress();
-
-        let html = "";
-
-        courseData.phases.forEach((phase) => {
-          html += `
-                    <div class="mb-4">
-                        <div class="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                            ${phase.title.split(":")[0]}
-                        </div>
-                        <div class="space-y-1">
-                `;
-
-          phase.lessons.forEach((lesson) => {
-            const isCompleted = progress.completedLessons.includes(lesson.id);
-            html += `
-                        <button onclick="showLesson('${lesson.id}')" 
-                            data-lesson-id="${lesson.id}"
-                            class="sidebar-item w-full text-left px-3 py-2 rounded-lg flex items-center gap-3 text-sm hover:bg-white/5">
-                            <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs ${isCompleted ? "bg-aurora/20 text-aurora" : "bg-white/10 text-gray-400"}">
-                                ${isCompleted ? "✓" : lesson.id}
-                            </span>
-                            <span class="truncate ${isCompleted ? "text-white" : "text-gray-400"}">${lesson.title}</span>
-                        </button>
-                    `;
-          });
-
-          html += "</div></div>";
-        });
-
-        nav.innerHTML = html;
-        updateProgressDisplay();
-      }
-
-      function renderPhaseCards() {
-        const container = document.getElementById("phaseCards");
-        const progress = getProgress();
-
-        let html = "";
-
-        courseData.phases.forEach((phase, index) => {
-          const completedInPhase = phase.lessons.filter((l) =>
-            progress.completedLessons.includes(l.id),
-          ).length;
-          const totalInPhase = phase.lessons.length;
-          const percentage = Math.round(
-            (completedInPhase / totalInPhase) * 100,
-          );
-
-          const colorClasses = {
-            aurora: "from-aurora/20 to-aurora/5 border-aurora/30",
-            plasma: "from-plasma/20 to-plasma/5 border-plasma/30",
-            nova: "from-nova/20 to-nova/5 border-nova/30",
-          };
-
-          const textColors = {
-            aurora: "text-aurora",
-            plasma: "text-plasma",
-            nova: "text-nova",
-          };
-
-          html += `
-                    <div class="lesson-card glass-card rounded-2xl p-6 border bg-gradient-to-br ${colorClasses[phase.color]} cursor-pointer slide-up" 
-                         style="animation-delay: ${0.1 * (index + 1)}s"
-                         onclick="showLesson('${phase.lessons[0].id}')">
-                        <div class="flex items-start justify-between mb-4">
-                            <div>
-                                <h3 class="text-xl font-semibold mb-1">${phase.title}</h3>
-                                <p class="text-gray-400 text-sm">${phase.subtitle}</p>
-                            </div>
-                            <div class="text-right">
-                                <div class="text-2xl font-bold ${textColors[phase.color]}">${percentage}%</div>
-                                <div class="text-xs text-gray-500">${completedInPhase}/${totalInPhase} lessons</div>
-                            </div>
-                        </div>
-                        <div class="w-full bg-white/10 rounded-full h-2 mb-4">
-                            <div class="h-2 rounded-full bg-gradient-to-r ${phase.color === "aurora" ? "from-aurora to-aurora/50" : phase.color === "plasma" ? "from-plasma to-plasma/50" : "from-nova to-nova/50"}" 
-                                 style="width: ${percentage}%"></div>
-                        </div>
-                        <div class="flex flex-wrap gap-2">
-                            ${phase.lessons
-                              .map(
-                                (lesson) => `
-                                <span class="px-2 py-1 rounded text-xs ${progress.completedLessons.includes(lesson.id) ? "bg-white/20 text-white" : "bg-white/5 text-gray-500"}">
-                                    ${lesson.id}
-                                </span>
-                            `,
-                              )
-                              .join("")}
-                        </div>
-                    </div>
-                `;
-        });
-
-        container.innerHTML = html;
-      }
-
-      function updateProgressDisplay() {
-        const progress = getProgress();
-        const totalLessons = getAllLessons().length;
-        const completed = progress.completedLessons.length;
-        const percentage = Math.round((completed / totalLessons) * 100);
-
-        document.getElementById("progressPercent").textContent =
-          `${percentage}%`;
-        document.getElementById("completedLessons").textContent = completed;
-        document.getElementById("totalLessons").textContent = totalLessons;
-
-        // Update progress ring
-        document
-          .querySelector(".progress-ring")
-          .style.setProperty("--progress", `${percentage}%`);
-      }
-
-      function updateStats() {
-        const progress = getProgress();
-        const comments = getComments();
-
-        document.getElementById("statCompleted").textContent =
-          progress.completedLessons.length;
-        document.getElementById("statQuizzes").textContent =
-          progress.quizzesPassed.length;
-
-        let totalComments = 0;
-        Object.values(comments).forEach((arr) => (totalComments += arr.length));
-        document.getElementById("statComments").textContent = totalComments;
-      }
-
-      // ===============================
-      // QUIZ FUNCTIONS
-      // ===============================
-      function renderQuiz(lesson) {
-        if (!lesson.quiz) {
-          document.getElementById("quizSection").classList.add("hidden");
-          return;
-        }
-
-        document.getElementById("quizSection").classList.remove("hidden");
-        const progress = getProgress();
-        const isPassed = progress.quizzesPassed.includes(lesson.id);
-
-        let html = `
-                <p class="text-lg text-gray-200 mb-6">${lesson.quiz.question}</p>
-                <div class="space-y-3" id="quizOptions">
-            `;
-
-        lesson.quiz.options.forEach((option, index) => {
-          html += `
-                    <div class="quiz-option p-4 rounded-xl border border-white/10 ${isPassed ? (index === lesson.quiz.correctIndex ? "correct" : "") : ""}"
-                         data-index="${index}"
-                         onclick="${isPassed ? "" : `selectQuizOption(${index})`}">
-                        <div class="flex items-center gap-3">
-                            <span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-sm font-mono">
-                                ${String.fromCharCode(65 + index)}
-                            </span>
-                            <span>${option}</span>
-                        </div>
-                    </div>
-                `;
-        });
-
-        html += "</div>";
-
-        if (!isPassed) {
-          html += `
-                    <button onclick="submitQuiz()" id="submitQuizBtn" class="btn-secondary px-6 py-3 rounded-xl font-medium mt-6 hidden">
-                        Submit Answer
-                    </button>
-                `;
-        }
-
-        document.getElementById("quizContent").innerHTML = html;
-
-        if (isPassed) {
-          document.getElementById("quizResult").innerHTML = `
-                    <div class="bg-aurora/20 border border-aurora/30 rounded-xl p-4">
-                        <div class="flex items-center gap-2 text-aurora font-semibold mb-2">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Quiz Completed!
-                        </div>
-                        <p class="text-gray-300 text-sm">${lesson.quiz.explanation}</p>
-                    </div>
-                `;
-          document.getElementById("quizResult").classList.remove("hidden");
-        } else {
-          document.getElementById("quizResult").classList.add("hidden");
-        }
-      }
-
-      let selectedQuizOption = null;
-
-      function selectQuizOption(index) {
-        selectedQuizOption = index;
-
-        document.querySelectorAll(".quiz-option").forEach((el, i) => {
-          el.classList.toggle("selected", i === index);
-        });
-
-        document.getElementById("submitQuizBtn").classList.remove("hidden");
-      }
-
-      function submitQuiz() {
-        if (selectedQuizOption === null || !currentLesson) return;
-
-        const isCorrect =
-          selectedQuizOption === currentLesson.quiz.correctIndex;
-
-        document.querySelectorAll(".quiz-option").forEach((el, i) => {
-          el.classList.remove("selected");
-          if (i === currentLesson.quiz.correctIndex) {
-            el.classList.add("correct");
-          } else if (i === selectedQuizOption && !isCorrect) {
-            el.classList.add("incorrect");
-          }
-          el.onclick = null;
-        });
-
-        document.getElementById("submitQuizBtn").classList.add("hidden");
-
-        if (isCorrect) {
-          const progress = getProgress();
-          if (!progress.quizzesPassed.includes(currentLesson.id)) {
-            progress.quizzesPassed.push(currentLesson.id);
-            saveProgress(progress);
-            updateStats();
-          }
-
-          document.getElementById("quizResult").innerHTML = `
-                    <div class="bg-aurora/20 border border-aurora/30 rounded-xl p-4">
-                        <div class="flex items-center gap-2 text-aurora font-semibold mb-2">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Correct!
-                        </div>
-                        <p class="text-gray-300 text-sm">${currentLesson.quiz.explanation}</p>
-                    </div>
-                `;
-          showToast("Quiz passed! Great job!", "success");
-        } else {
-          document.getElementById("quizResult").innerHTML = `
-                    <div class="bg-red-500/20 border border-red-500/30 rounded-xl p-4">
-                        <div class="flex items-center gap-2 text-red-400 font-semibold mb-2">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                            </svg>
-                            Not quite right
-                        </div>
-                        <p class="text-gray-300 text-sm">${currentLesson.quiz.explanation}</p>
-                        <button onclick="renderQuiz(currentLesson)" class="mt-3 text-sm text-plasma hover:underline">Try again</button>
-                    </div>
-                `;
-        }
-
-        document.getElementById("quizResult").classList.remove("hidden");
-        selectedQuizOption = null;
-      }
-
-      // ===============================
-      // COMMENTS FUNCTIONS
-      // ===============================
-      function renderComments(lessonId) {
-        const comments = getComments();
-        const lessonComments = comments[lessonId] || [];
-
-        const container = document.getElementById("commentsList");
-
-        if (lessonComments.length === 0) {
-          container.innerHTML =
-            '<p class="text-gray-500 text-sm italic">No notes yet. Add your first note below!</p>';
-          return;
-        }
-
-        let html = "";
-        lessonComments.forEach((comment, index) => {
-          html += `
-                    <div class="bg-white/5 rounded-xl p-4 group">
-                        <div class="flex items-start justify-between gap-3">
-                            <p class="text-gray-300 text-sm">${escapeHtml(comment.text)}</p>
-                            <button onclick="deleteComment('${lessonId}', ${index})" 
-                                class="opacity-0 group-hover:opacity-100 p-1 rounded hover:bg-red-500/20 transition-all">
-                                <svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="text-xs text-gray-500 mt-2">${new Date(comment.createdAt).toLocaleDateString()}</div>
-                    </div>
-                `;
-        });
-
-        container.innerHTML = html;
-      }
-
-      function addComment() {
-        if (!currentLesson) return;
-
-        const input = document.getElementById("commentInput");
-        const text = input.value.trim();
-
-        if (!text) return;
-
-        const comments = getComments();
-        if (!comments[currentLesson.id]) {
-          comments[currentLesson.id] = [];
-        }
-
-        comments[currentLesson.id].push({
-          text,
-          createdAt: new Date().toISOString(),
-        });
-
-        saveComments(comments);
-        input.value = "";
-        renderComments(currentLesson.id);
-        updateStats();
-        showToast("Note added!", "success");
-      }
-
-      function deleteComment(lessonId, index) {
-        const comments = getComments();
-        if (comments[lessonId]) {
-          comments[lessonId].splice(index, 1);
-          saveComments(comments);
-          renderComments(lessonId);
-          updateStats();
-          showToast("Note deleted", "success");
-        }
-      }
-
-      // ===============================
-      // COMPLETION FUNCTIONS
-      // ===============================
-      function markComplete() {
-        if (!currentLesson) return;
-
-        const progress = getProgress();
-        const index = progress.completedLessons.indexOf(currentLesson.id);
-
-        if (index === -1) {
-          progress.completedLessons.push(currentLesson.id);
-          showToast("Lesson marked complete!", "success");
-        } else {
-          progress.completedLessons.splice(index, 1);
-          showToast("Lesson unmarked", "success");
-        }
-
-        saveProgress(progress);
-        updateLessonStatus(currentLesson.id);
-        renderSidebar();
-        updateStats();
-      }
-
-      // ===============================
-      // LOGOUT FUNCTION
-      // ===============================
-      function logout() {
-        document.getElementById("welcomePage").classList.remove("hidden");
-        document.getElementById("coursePage").classList.add("hidden");
-
-        // Pre-fill form with existing data
-        const user = getUserData();
-        if (user.name) document.getElementById("userName").value = user.name;
-        if (user.email) document.getElementById("userEmail").value = user.email;
-      }
-
-      // ===============================
-      // UTILITY FUNCTIONS
-      // ===============================
-      function escapeHtml(text) {
-        const div = document.createElement("div");
-        div.textContent = text;
-        return div.innerHTML;
-      }
-
-      // ===============================
-      // INITIALIZATION
-      // ===============================
-      document.addEventListener("DOMContentLoaded", async function () {
-        await loadCourseData();
-
-        // Check if user already exists
-        const user = getUserData();
-        if (user.name && user.email) {
-          showCoursePage();
-        }
-
-        // Handle enter key on comment input
-        document
-          .getElementById("commentInput")
-          .addEventListener("keypress", function (e) {
-            if (e.key === "Enter") {
-              addComment();
-            }
-          });
-
-        // Handle enter key on welcome form
-        document
-          .getElementById("userEmail")
-          .addEventListener("keypress", function (e) {
-            if (e.key === "Enter") {
-              startCourse();
-            }
-          });
-      });
+        let currentLesson = null, courseData = STATIC_COURSE_DATA;
+        function getStorageKey(k){return `ai_course_${k}`}
+        function saveToStorage(k,d){try{localStorage.setItem(getStorageKey(k),JSON.stringify(d));return true}catch(e){return false}}
+        function loadFromStorage(k){try{const d=localStorage.getItem(getStorageKey(k));return d?JSON.parse(d):null}catch(e){return null}}
+        function getUserData(){return loadFromStorage('user')||{name:'',email:'',startedAt:null}}
+        function saveUserData(d){return saveToStorage('user',d)}
+        function getProgress(){return loadFromStorage('progress')||{completedLessons:[],quizzesPassed:[]}}
+        function saveProgress(p){return saveToStorage('progress',p)}
+        function getComments(){return loadFromStorage('comments')||{}}
+        function saveComments(c){return saveToStorage('comments',c)}
+        function exportProgress(){const d={user:getUserData(),progress:getProgress(),comments:getComments(),courseData,exportedAt:new Date().toISOString(),version:'2.0'};const b=new Blob([JSON.stringify(d,null,2)],{type:'application/json'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download=`course-progress-${new Date().toISOString().split('T')[0]}.json`;document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);showToast('Progress exported!')}
+        function importProgress(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=function(ev){try{const d=JSON.parse(ev.target.result);if(d.user)saveUserData(d.user);if(d.progress)saveProgress(d.progress);if(d.comments)saveComments(d.comments);if(d.courseData){courseData=d.courseData;saveToStorage('courseData',courseData)}showToast('Progress imported!');const u=getUserData();if(u.name&&u.email)showCoursePage()}catch(err){showToast('Invalid file','error')}};r.readAsText(f)}
+        async function loadCourseData(){const s=loadFromStorage('courseData');if(s){courseData=s;return courseData}courseData=STATIC_COURSE_DATA;return courseData}
+        function getYouTubeEmbedUrl(id){return `https://www.youtube.com/embed/${id}?rel=0&modestbranding=1`}
+        function renderVideo(l){const c=document.getElementById('videoContainer');if(!l.videoId){c.innerHTML=`<div class="video-placeholder"><div class="text-center p-8"><div class="w-20 h-20 mx-auto mb-4 rounded-full bg-white/5 flex items-center justify-center"><svg class="w-10 h-10 text-gray-500" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><p class="text-gray-500">No video available</p></div></div>`;return}if(l.videoType==='youtube'){c.innerHTML=`<iframe src="${getYouTubeEmbedUrl(l.videoId)}" title="${l.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="rounded-b-2xl"></iframe>`}else{c.innerHTML=`<video controls class="w-full h-full"><source src="${l.videoId}" type="video/mp4">Your browser doesn't support video.</video>`}}
+        function renderResources(l){const c=document.getElementById('resourcesList'),s=document.getElementById('resourcesSection');if(!l.resources||!l.resources.length){s.classList.add('hidden');return}s.classList.remove('hidden');const icons={tutorial:'📚',course:'🎓',article:'📰',documentation:'📖',guide:'📋',tool:'🛠️','case-study':'💼'};let h='';l.resources.forEach(r=>{const i=icons[r.type]||'🔗';h+=`<a href="${r.url}" target="_blank" rel="noopener noreferrer" class="resource-link flex items-center gap-4 p-4 rounded-xl border border-white/10"><div class="w-10 h-10 rounded-lg bg-solar/20 flex items-center justify-center flex-shrink-0"><span class="text-lg">${i}</span></div><div class="flex-1 min-w-0"><div class="font-medium text-white truncate">${r.title}</div><div class="text-sm text-gray-500 truncate">${r.url}</div></div><div class="flex items-center gap-2"><span class="px-2 py-1 rounded-full bg-white/5 text-xs text-gray-400 capitalize">${r.type}</span><svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></div></a>`});c.innerHTML=h}
+        function showToast(m,t='success'){const toast=document.getElementById('toast'),msg=document.getElementById('toastMessage'),icon=document.getElementById('toastIcon');msg.textContent=m;if(t==='error'){icon.innerHTML='<svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>';icon.className='w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center'}else{icon.innerHTML='<svg class="w-4 h-4 text-aurora" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>';icon.className='w-8 h-8 rounded-full bg-aurora/20 flex items-center justify-center'}toast.classList.remove('translate-y-20','opacity-0');toast.classList.add('translate-y-0','opacity-100');setTimeout(()=>{toast.classList.add('translate-y-20','opacity-0');toast.classList.remove('translate-y-0','opacity-100')},3000)}
+        function toggleSidebar(){document.getElementById('sidebar').classList.toggle('-translate-x-full')}
+        function startCourse(){const n=document.getElementById('userName').value.trim(),e=document.getElementById('userEmail').value.trim();if(!n||!e){showToast('Enter name and email','error');return}if(!e.includes('@')){showToast('Enter valid email','error');return}saveUserData({name:n,email:e,startedAt:new Date().toISOString()});showCoursePage()}
+        function showCoursePage(){document.getElementById('welcomePage').classList.add('hidden');document.getElementById('coursePage').classList.remove('hidden');const u=getUserData();document.getElementById('displayName').textContent=u.name;document.getElementById('userAvatar').textContent=u.name.charAt(0).toUpperCase();document.getElementById('dashboardName').textContent=u.name.split(' ')[0];renderSidebar();showDashboard();updateStats()}
+        function showDashboard(){document.getElementById('dashboardView').classList.remove('hidden');document.getElementById('lessonView').classList.add('hidden');renderPhaseCards();updateStats()}
+        function showLesson(id){const l=findLesson(id);if(!l)return;currentLesson=l;document.getElementById('dashboardView').classList.add('hidden');document.getElementById('lessonView').classList.remove('hidden');const p=findPhaseForLesson(id);document.getElementById('lessonPhase').textContent=p.title.split(':')[0];document.getElementById('lessonTitle').textContent=l.title;document.getElementById('lessonSubtitle').textContent=l.subtitle;document.getElementById('lessonContent').innerHTML=l.content;renderResources(l);renderVideo(l);updateLessonStatus(id);renderQuiz(l);renderComments(id);updateNavButtons(id);document.querySelectorAll('.sidebar-item').forEach(i=>{i.classList.remove('active');if(i.dataset.lessonId===id)i.classList.add('active')});if(window.innerWidth<1024)document.getElementById('sidebar').classList.add('-translate-x-full');window.scrollTo(0,0)}
+        function findLesson(id){for(const p of courseData.phases){const l=p.lessons.find(l=>l.id===id);if(l)return l}return null}
+        function findPhaseForLesson(id){for(const p of courseData.phases){if(p.lessons.find(l=>l.id===id))return p}return null}
+        function getAllLessons(){const ls=[];for(const p of courseData.phases)ls.push(...p.lessons);return ls}
+        function navigateLesson(d){if(!currentLesson)return;const ls=getAllLessons(),i=ls.findIndex(l=>l.id===currentLesson.id),n=i+d;if(n>=0&&n<ls.length)showLesson(ls[n].id)}
+        function updateNavButtons(id){const ls=getAllLessons(),i=ls.findIndex(l=>l.id===id);document.getElementById('prevLesson').disabled=i===0;document.getElementById('nextLesson').disabled=i===ls.length-1;document.getElementById('prevLesson').classList.toggle('opacity-50',i===0);document.getElementById('nextLesson').classList.toggle('opacity-50',i===ls.length-1)}
+        function updateLessonStatus(id){const p=getProgress(),c=p.completedLessons.includes(id),s=document.getElementById('lessonStatus'),b=document.getElementById('markCompleteBtn');if(c){s.innerHTML='<span class="w-3 h-3 rounded-full bg-aurora"></span><span class="text-sm text-aurora">Completed</span>';b.innerHTML='<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Completed';b.classList.remove('btn-secondary');b.classList.add('bg-aurora/20','text-aurora')}else{s.innerHTML='<span class="w-3 h-3 rounded-full bg-gray-500"></span><span class="text-sm">In Progress</span>';b.innerHTML='<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Mark Complete';b.classList.add('btn-secondary');b.classList.remove('bg-aurora/20','text-aurora')}}
+        function renderSidebar(){const n=document.getElementById('lessonNav'),p=getProgress();let h='';courseData.phases.forEach(ph=>{h+=`<div class="mb-4"><div class="px-3 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">${ph.title.split(':')[0]}</div><div class="space-y-1">`;ph.lessons.forEach(l=>{const c=p.completedLessons.includes(l.id);h+=`<button onclick="showLesson('${l.id}')" data-lesson-id="${l.id}" class="sidebar-item w-full text-left px-3 py-2 rounded-lg flex items-center gap-3 text-sm hover:bg-white/5"><span class="w-6 h-6 rounded-full flex items-center justify-center text-xs ${c?'bg-aurora/20 text-aurora':'bg-white/10 text-gray-400'}">${c?'✓':l.id}</span><span class="truncate ${c?'text-white':'text-gray-400'}">${l.title}</span></button>`});h+='</div></div>'});n.innerHTML=h;updateProgressDisplay()}
+        function renderPhaseCards(){const c=document.getElementById('phaseCards'),p=getProgress();let h='';courseData.phases.forEach((ph,i)=>{const comp=ph.lessons.filter(l=>p.completedLessons.includes(l.id)).length,tot=ph.lessons.length,pct=Math.round(comp/tot*100);const colors={aurora:'from-aurora/20 to-aurora/5 border-aurora/30',plasma:'from-plasma/20 to-plasma/5 border-plasma/30',nova:'from-nova/20 to-nova/5 border-nova/30'};const txt={aurora:'text-aurora',plasma:'text-plasma',nova:'text-nova'};h+=`<div class="lesson-card glass-card rounded-2xl p-6 border bg-gradient-to-br ${colors[ph.color]} cursor-pointer slide-up" style="animation-delay:${0.1*(i+1)}s" onclick="showLesson('${ph.lessons[0].id}')"><div class="flex items-start justify-between mb-4"><div><h3 class="text-xl font-semibold mb-1">${ph.title}</h3><p class="text-gray-400 text-sm">${ph.subtitle}</p></div><div class="text-right"><div class="text-2xl font-bold ${txt[ph.color]}">${pct}%</div><div class="text-xs text-gray-500">${comp}/${tot} lessons</div></div></div><div class="w-full bg-white/10 rounded-full h-2 mb-4"><div class="h-2 rounded-full bg-gradient-to-r ${ph.color==='aurora'?'from-aurora to-aurora/50':ph.color==='plasma'?'from-plasma to-plasma/50':'from-nova to-nova/50'}" style="width:${pct}%"></div></div><div class="flex flex-wrap gap-2">${ph.lessons.map(l=>`<span class="px-2 py-1 rounded text-xs ${p.completedLessons.includes(l.id)?'bg-white/20 text-white':'bg-white/5 text-gray-500'}">${l.id}</span>`).join('')}</div></div>`});c.innerHTML=h}
+        function updateProgressDisplay(){const p=getProgress(),t=getAllLessons().length,c=p.completedLessons.length,pct=Math.round(c/t*100);document.getElementById('progressPercent').textContent=`${pct}%`;document.getElementById('completedLessons').textContent=c;document.getElementById('totalLessons').textContent=t;document.querySelector('.progress-ring').style.setProperty('--progress',`${pct}%`)}
+        function updateStats(){const p=getProgress(),c=getComments();document.getElementById('statCompleted').textContent=p.completedLessons.length;document.getElementById('statQuizzes').textContent=p.quizzesPassed.length;let tc=0;Object.values(c).forEach(a=>tc+=a.length);document.getElementById('statComments').textContent=tc}
+        function renderQuiz(l){if(!l.quiz){document.getElementById('quizSection').classList.add('hidden');return}document.getElementById('quizSection').classList.remove('hidden');const p=getProgress(),passed=p.quizzesPassed.includes(l.id);let h=`<p class="text-lg text-gray-200 mb-6">${l.quiz.question}</p><div class="space-y-3" id="quizOptions">`;l.quiz.options.forEach((o,i)=>{h+=`<div class="quiz-option p-4 rounded-xl border border-white/10 ${passed?(i===l.quiz.correctIndex?'correct':''):''}" data-index="${i}" onclick="${passed?'':`selectQuizOption(${i})`}"><div class="flex items-center gap-3"><span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-sm font-mono">${String.fromCharCode(65+i)}</span><span>${o}</span></div></div>`});h+='</div>';if(!passed)h+=`<button onclick="submitQuiz()" id="submitQuizBtn" class="btn-secondary px-6 py-3 rounded-xl font-medium mt-6 hidden">Submit Answer</button>`;document.getElementById('quizContent').innerHTML=h;if(passed){document.getElementById('quizResult').innerHTML=`<div class="bg-aurora/20 border border-aurora/30 rounded-xl p-4"><div class="flex items-center gap-2 text-aurora font-semibold mb-2"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Quiz Completed!</div><p class="text-gray-300 text-sm">${l.quiz.explanation}</p></div>`;document.getElementById('quizResult').classList.remove('hidden')}else{document.getElementById('quizResult').classList.add('hidden')}}
+        let selectedQuizOption=null;
+        function selectQuizOption(i){selectedQuizOption=i;document.querySelectorAll('.quiz-option').forEach((e,j)=>{e.classList.toggle('selected',j===i)});document.getElementById('submitQuizBtn').classList.remove('hidden')}
+        function submitQuiz(){if(selectedQuizOption===null||!currentLesson)return;const correct=selectedQuizOption===currentLesson.quiz.correctIndex;document.querySelectorAll('.quiz-option').forEach((e,i)=>{e.classList.remove('selected');if(i===currentLesson.quiz.correctIndex)e.classList.add('correct');else if(i===selectedQuizOption&&!correct)e.classList.add('incorrect');e.onclick=null});document.getElementById('submitQuizBtn').classList.add('hidden');if(correct){const p=getProgress();if(!p.quizzesPassed.includes(currentLesson.id)){p.quizzesPassed.push(currentLesson.id);saveProgress(p);updateStats()}document.getElementById('quizResult').innerHTML=`<div class="bg-aurora/20 border border-aurora/30 rounded-xl p-4"><div class="flex items-center gap-2 text-aurora font-semibold mb-2"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Correct!</div><p class="text-gray-300 text-sm">${currentLesson.quiz.explanation}</p></div>`;showToast('Quiz passed!')}else{document.getElementById('quizResult').innerHTML=`<div class="bg-red-500/20 border border-red-500/30 rounded-xl p-4"><div class="flex items-center gap-2 text-red-400 font-semibold mb-2"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>Not quite right</div><p class="text-gray-300 text-sm">${currentLesson.quiz.explanation}</p><button onclick="renderQuiz(currentLesson)" class="mt-3 text-sm text-plasma hover:underline">Try again</button></div>`}document.getElementById('quizResult').classList.remove('hidden');selectedQuizOption=null}
+        function renderComments(id){const c=getComments(),lc=c[id]||[],el=document.getElementById('commentsList');if(!lc.length){el.innerHTML='<p class="text-gray-500 text-sm italic">No notes yet. Add your first note below!</p>';return}let h='';lc.forEach((cm,i)=>{h+=`<div class="bg-white/5 rounded-xl p-4 group"><div class="flex items-start justify-between gap-3"><p class="text-gray-300 text-sm">${escapeHtml(cm.text)}</p><button onclick="deleteComment('${id}',${i})" class="opacity-0 group-hover:opacity-100 p-1 rounded hover:bg-red-500/20 transition-all"><svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button></div><div class="text-xs text-gray-500 mt-2">${new Date(cm.createdAt).toLocaleDateString()}</div></div>`});el.innerHTML=h}
+        function addComment(){if(!currentLesson)return;const inp=document.getElementById('commentInput'),txt=inp.value.trim();if(!txt)return;const c=getComments();if(!c[currentLesson.id])c[currentLesson.id]=[];c[currentLesson.id].push({text:txt,createdAt:new Date().toISOString()});saveComments(c);inp.value='';renderComments(currentLesson.id);updateStats();showToast('Note added!')}
+        function deleteComment(id,i){const c=getComments();if(c[id]){c[id].splice(i,1);saveComments(c);renderComments(id);updateStats();showToast('Note deleted')}}
+        function markComplete(){if(!currentLesson)return;const p=getProgress(),i=p.completedLessons.indexOf(currentLesson.id);if(i===-1){p.completedLessons.push(currentLesson.id);showToast('Lesson complete!')}else{p.completedLessons.splice(i,1);showToast('Lesson unmarked')}saveProgress(p);updateLessonStatus(currentLesson.id);renderSidebar();updateStats()}
+        function logout(){document.getElementById('welcomePage').classList.remove('hidden');document.getElementById('coursePage').classList.add('hidden');const u=getUserData();if(u.name)document.getElementById('userName').value=u.name;if(u.email)document.getElementById('userEmail').value=u.email}
+        function escapeHtml(t){const d=document.createElement('div');d.textContent=t;return d.innerHTML}
+        document.addEventListener('DOMContentLoaded',async function(){await loadCourseData();const u=getUserData();if(u.name&&u.email)showCoursePage();document.getElementById('commentInput').addEventListener('keypress',function(e){if(e.key==='Enter')addComment()});document.getElementById('userEmail').addEventListener('keypress',function(e){if(e.key==='Enter')startCourse()})});
     </script>
-  </body>
+</body>
 </html>
